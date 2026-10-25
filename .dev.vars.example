@@ -1,0 +1,2 @@
+# Local development only: matches the starter's loopback mock sign-in.
+SITE_OWNER_EMAIL=seedy@sites.test
