@@ -177,13 +177,16 @@ test("refuses ignored target junction ancestors without following them", async c
   const outside = path.join(directory, "outside");
   await mkdir(outside);
   await put(outside, "page.tsx", "Keep outside content\n");
-  await put(target, ".gitignore", `${IGNORE}app/\n`);
+  // A directory-only pattern does not ignore POSIX symlinks. Match the path
+  // itself so both POSIX symlinks and Windows junctions reach the path guard.
+  await put(target, ".gitignore", `${IGNORE}/app\n`);
   commit(target, "ignore an existing local directory");
   try { await symlink(outside, path.join(target, "app"), "junction"); }
   catch (error) {
     if (error.code === "EPERM" || error.code === "EACCES") return context.skip("This host cannot create junctions.");
     throw error;
   }
+  assert.equal(git(target, ["status", "--porcelain"]), "", "The ignored junction must reach the path safety check.");
   await assert.rejects(sync(), /Symlink or junction paths/);
   assert.equal(await readFile(path.join(outside, "page.tsx"), "utf8"), "Keep outside content\n");
 });
