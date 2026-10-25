@@ -2,11 +2,13 @@
 
 ## Public GitHub content
 
-The website refreshes a shared D1 snapshot from the public GitHub API after its six-hour cache expires. The next visitor can trigger the refresh; the owner's computer and browser do not need to be open. Concurrent requests share a refresh lease. If GitHub is unavailable or rate-limited, the last successful data remains visible and refresh attempts back off.
+GitHub Actions refreshes a public snapshot every six hours and saves `github.json` on the repository's separate `github-data` branch. The site reads that feed into a shared D1 cache. The next visitor can trigger a cache refresh; the owner's computer and browser do not need to be open. Concurrent requests share a refresh lease. The direct public GitHub API is a fallback. If a source is unavailable or rate-limited, the last successful data remains visible and retries back off.
 
 The nine selected projects keep their order and curated stage notes. Repository descriptions, primary languages, last-push dates, and archived status come from GitHub. Featured issue states and the latest SQLSage release refresh too. Up to three other public reports or pull requests authored by Figo5 appear as compact links.
 
-Acknowledgment wording, featured write-ups, experience, and favorites stay curated. An issue closing does not automatically become a confirmed security finding or a maintainer credit. Only unauthenticated public GitHub sources are used; no GitHub token or private repository data is sent to visitors.
+Acknowledgment wording, featured write-ups, experience, and favorites stay curated. An issue closing does not automatically become a confirmed security finding or a maintainer credit. Only public GitHub data is published. The Actions job uses its temporary repository-scoped token to refresh public API data and update the data branch; that token stays in the job. The website uses no GitHub credentials, and no private repository data is sent to visitors.
+
+The Actions workflow also supports **Run workflow** and refreshes when its source or workflow changes on `main`. A failed refresh keeps the previous feed. Data-branch commits do not trigger a website rebuild.
 
 ## Website publication
 
