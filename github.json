@@ -1,0 +1,155 @@
+{
+  "repositories": {
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-25T17:37:54.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
+    },
+    "figo5": {
+      "description": "Tools and side projects.",
+      "language": null,
+      "pushedAt": "2026-10-17T20:41:20.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/Figo5"
+    },
+    "diffguard": {
+      "description": "AI-assisted git diff reviews.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-17T20:27:33.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/diffguard"
+    },
+    "lab-in-a-box": {
+      "description": "A local Docker lab for security practice.",
+      "language": "Python",
+      "pushedAt": "2026-10-17T20:25:59.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/lab-in-a-box"
+    },
+    "parcel-pack": {
+      "description": "Offline SwiftUI iPhone packing puzzle with generated, solvable boxes. Source available; iOS device verification pending.",
+      "language": "Swift",
+      "pushedAt": "2026-10-17T20:25:55.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/parcel-pack"
+    },
+    "edgeterminal": {
+      "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
+      "language": "Python",
+      "pushedAt": "2026-10-17T20:25:52.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/edgeterminal"
+    },
+    "agentops": {
+      "description": "A local viewer for coding agent activity, handoffs, and verdicts.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-17T20:25:46.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/agentops"
+    },
+    "sqlsage": {
+      "description": "PostgreSQL query analysis and rewrite suggestions.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-17T20:25:41.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/sqlsage"
+    },
+    "balatroaisparring": {
+      "description": "Experimental local Balatro AI practice companion. Development in progress; not yet playable.",
+      "language": "Python",
+      "pushedAt": "2026-10-16T13:52:49.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/BalatroAISparring"
+    },
+    "civicfolio": {
+      "description": "Local-first AI stock research app with cited hypotheses, live market context, and research journaling",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-16T13:52:47.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/civicfolio"
+    },
+    "gmail-tidy": {
+      "description": "Privacy-conscious Gmail cleanup CLI using declarative, non-destructive rules",
+      "language": "Python",
+      "pushedAt": "2026-10-16T13:51:05.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gmail-tidy"
+    },
+    "worldhand": {
+      "description": "Deterministic planet-building poker roguelike with a 3D world and offline portable build",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-16T13:26:26.000Z",
+      "archived": true,
+      "url": "https://github.com/Figo5/worldhand"
+    },
+    "fairwayos": {
+      "description": "Golf-video analysis research prototype: automatic ball, clubhead, golfer and cup tracking with video-motion analytics. Paused development checkpoint.",
+      "language": "Python",
+      "pushedAt": "2026-10-16T13:09:27.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/fairwayos"
+    },
+    "breakpar": {
+      "description": "Archived daily browser golf game: 18 holes, seeded shot decisions, and server-authoritative simulation.",
+      "language": "TypeScript",
+      "pushedAt": "2026-08-06T15:14:51.000Z",
+      "archived": true,
+      "url": "https://github.com/Figo5/breakpar"
+    }
+  },
+  "issues": {
+    "oapi-codegen/nethttp-middleware#89": {
+      "state": "open",
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
+    },
+    "nodejs/node#66853": {
+      "state": "open",
+      "url": "https://github.com/nodejs/node/issues/66853",
+      "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "mafintosh/tar-fs#122": {
+      "state": "open",
+      "url": "https://github.com/mafintosh/tar-fs/issues/122",
+      "updatedAt": "2026-10-23T18:17:28.000Z"
+    }
+  },
+  "contributions": [
+    {
+      "title": "extractAll writes through a pre-existing dangling destination symlink (canonical-path guard bypass)",
+      "url": "https://github.com/srikanth-lingala/zip4j/issues/594",
+      "repository": "srikanth-lingala/zip4j",
+      "action": "Public report",
+      "occurredAt": "2026-10-23T22:56:40.000Z"
+    },
+    {
+      "title": "Extraction writes through a pre-existing destination symlink (arbitrary file write outside the target)",
+      "url": "https://github.com/antelle/node-stream-zip/issues/118",
+      "repository": "antelle/node-stream-zip",
+      "action": "Public report",
+      "occurredAt": "2026-10-23T19:40:43.000Z"
+    },
+    {
+      "title": "v2.9.8 is tagged but has no release; v2.9.7 still trusts the distrusted eMudhra root",
+      "url": "https://github.com/denoland/deno/issues/37056",
+      "repository": "denoland/deno",
+      "action": "Public report",
+      "occurredAt": "2026-10-21T14:21:58.000Z"
+    }
+  ],
+  "latestRelease": {
+    "tag": "v0.2.2",
+    "name": "SQLSage v0.2.2",
+    "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
+    "publishedAt": "2026-10-15T12:18:01.000Z"
+  },
+  "fetchedAt": "2026-10-25T17:38:04.952Z",
+  "stale": false
+}
