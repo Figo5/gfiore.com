@@ -4,52 +4,52 @@ Source for my personal website: **[gfiore.com](https://gfiore.com)**.
 
 A minimal dark site with my experience, selected projects, public findings and contributions, and favorite albums, movies, and golf courses.
 
-Built with React, TypeScript, Vinext/Vite, and Cloudflare Workers. Favorites use Cloudflare D1 and an owner-only editor with Sites authentication.
+Built with React, TypeScript, and Next.js. The deployment configuration targets Netlify, with continuous deployment from this repository's `main` branch. Personal content lives in GitHub; the app needs no runtime database, owner sign-in, or write credentials.
 
 ## Run locally
 
-Requires Node.js 22.13 or newer and npm.
+Requires Node.js 22.13 or newer and npm. Netlify builds use Node.js 24.
 
 ```sh
-npm run install:ci
-npm run build
-node node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_loud_shatterstar.sql
-node node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0001_sweet_captain_flint.sql
+npm ci
 npm run dev
 ```
 
-Open `http://localhost:5173`. Run each SQL migration once for a new local database; saved local data stays in the ignored `.wrangler/` directory.
+Open `http://localhost:3000`.
 
-To try the favorites editor, copy `.dev.vars.example` to `.dev.vars`, restart the development server, and choose **Owner sign-in** in the footer. The example uses the starter's loopback-only mock identity. No real credentials are needed for local preview.
+Run the same checks used for deployment:
 
 ```sh
-node node_modules/typescript/bin/tsc --noEmit
 npm test
+npm run typecheck
 npm run build
 ```
+
+Use `npm start` to serve the production build locally. No database migrations or environment secrets are needed.
 
 ## Where to edit
 
 | File | Contents |
 | --- | --- |
-| `app/Portfolio.tsx` | Experience, projects, findings, and page components |
-| `app/profile-types.ts` | Default favorite albums, movies, and golf courses |
+| `app/Portfolio.tsx` | Experience, selected projects, featured findings, and page components |
+| `content/favorites.json` | Favorite albums, movies, and golf courses |
 | `app/favorite-media.ts` | Artwork matching, image sources, and photo credits |
+| `public/favorites/` | Album covers, movie posters, and course photos |
 | `app/globals.css` | Layout and dark theme |
-| `app/api/profile/route.ts` | Validated owner-only saves |
-| `app/profile-store.ts` | D1 persistence and owner authorization |
-| `app/github-data-core.ts` | Public GitHub sources, validation, caching, and retry behavior |
-| `db/schema.ts`, `drizzle/` | Database schema and migrations |
+| `app/github-data.ts` | Hosted public GitHub feed reader and committed fallback |
+| `app/github-data-core.ts` | Public GitHub source validation and feed generation logic |
+| `content/github-fallback.json` | Committed public snapshot used during feed outages |
+| `netlify.toml` | Deployment checks, build command, Node version, and publish directory |
 
-## Hosting and authentication
+Edit a file on GitHub and commit it to `main`, or merge a pull request. Once the Netlify project is connected to the repository, each `main` update runs the checks and build before publishing. The footer's **Edit favorites** link opens the favorites file in GitHub. Image matching uses the favorite titles, so adding a new title may also require a media entry and an image.
 
-The live site is hosted on Sites. A Codex background publisher checks this repository's `main` branch hourly and publishes new commits after checks pass. The publisher needs the owner's computer and Codex running. The checked-in hosting manifest declares storage bindings and omits the live Site ID. Production data and deployment credentials are kept outside this repository.
+## Automatic updates
 
-Owner editing requires the server-side `SITE_OWNER_EMAIL` runtime secret for the first save, then the stored site-scoped user ID. The deployed app trusts identity headers supplied by Sites. If adapting it to another host, supply verified server-side authentication before enabling editing; arbitrary client identity headers must not be trusted. Local mock sign-in is restricted to loopback development requests.
+Website deployments run on Netlify's build infrastructure. They do not need a desktop computer, an open browser, or a Codex task. The build command is `npm test && npm run typecheck && npm run build`, and the publish directory is `.next`. Failed checks or builds leave the previous successful deployment in place.
 
-Public visitors can browse without signing in. Anonymous and non-owner visitors cannot save changes. The old About field remains in the database schema for compatibility and is excluded from public responses.
+GitHub Actions separately refreshes public project details, featured issue states, the latest SQLSage release, and recent authored public reports every six hours. The website checks that public feed through a five-minute Next.js fetch cache, without rebuilding the site or using GitHub credentials. A validated committed snapshot keeps the content available if the feed cannot be read.
 
-Public GitHub project details, featured issue states, the latest SQLSage release, and recent authored public reports refresh through a shared six-hour cache. Last-good data remains available during GitHub outages. See [automatic updates](docs/automatic-updates.md) for the content sources and publication runbook.
+See [automatic updates](docs/automatic-updates.md) for deployment setup, content sources, and verification. Legacy Sites helpers, hosting metadata, and D1 migrations remain in the repository as historical tooling; the Next.js runtime and Netlify deployment do not use them.
 
 ## Credits
 

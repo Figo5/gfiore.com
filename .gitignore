@@ -16,6 +16,8 @@ __pycache__/
 !/.yarn/versions/
 
 # Generated builds and framework state
+/.netlify/
+/public/deployment.json
 /dist/
 /.next/
 /.vinext/

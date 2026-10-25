@@ -1,40 +1,61 @@
 # Automatic updates
 
+## Website publication
+
+Netlify's Git integration is the deployment path for `Figo5/gfiore.com`. Connect the repository to a Netlify project and set `main` as the production branch. The checked-in `netlify.toml` supplies:
+
+| Setting | Value |
+| --- | --- |
+| Base directory | Repository root |
+| Production branch | `main` |
+| Build command | `npm test && npm run typecheck && npm run build` |
+| Publish directory | `.next` |
+| Node.js version | `24` |
+
+Netlify supports the Next.js App Router and server routes through its OpenNext adapter. Use its automatically managed adapter rather than pinning a version. Keep `.netlify/` ignored and leave production deploys unlocked so successful Git builds can publish automatically.
+
+For a content or code change:
+
+1. Edit the relevant file in GitHub, or push a local change to a branch.
+2. Commit to `main`, or merge the pull request into `main`.
+3. Netlify checks out the commit, installs dependencies, runs the tests and TypeScript check, and builds the site.
+4. A successful build is published as an atomic deployment. A failed check or build leaves the previous successful deployment serving visitors. Fix the failure and push a new commit.
+
+This runs on Netlify's cloud infrastructure. No desktop computer, local publisher state file, scheduled Codex task, or Sites source credential is part of the deployment path. Limit production builds to `main`; the separate `github-data` branch contains feed data and does not need website deployments.
+
+Configure `gfiore.com` and `www.gfiore.com` on the Netlify project using the DNS records supplied by Netlify. Verify a successful project deploy and HTTPS before switching the domains. Repository configuration alone does not connect the GitHub integration or change DNS.
+
+### Deployment verification
+
+`npm run build` writes `public/deployment.json` with the repository, branch, and full GitHub commit. Netlify's `COMMIT_REF` supplies the build's commit; local builds use `git rev-parse HEAD`.
+
+After publishing, check both custom domains:
+
+- `/deployment.json` reports the intended `main` commit.
+- The homepage loads the expected experience, projects, findings, favorites, and images.
+- `/api/github` returns a valid public snapshot.
+- `/api/profile` returns the committed favorites with `canEdit: false`; `PUT /api/profile` returns `405`.
+
+When investigating a failed build, use the Netlify deploy log for the failing commit. Do not change production DNS or bypass failed checks to publish an unverified build.
+
+## Personal content
+
+Experience, selected projects, and featured findings are curated in `app/Portfolio.tsx`. Favorites are stored in `content/favorites.json`; the initial file preserves the existing published favorites. The footer's **Edit favorites** link opens this file in GitHub. Keep each favorite's `title`, `note`, and `url` fields; use an empty string for optional notes or links.
+
+Album covers, movie posters, and course photos are matched by title in `app/favorite-media.ts`, with local files under `public/favorites/`. Add media and its attribution there when adding favorites that need new images. A title without matching artwork displays a simple initial tile.
+
+The application has no browser editor, runtime database, or writable profile API. GitHub repository permissions control who can change the content. No owner runtime secret or identity headers are used.
+
 ## Public GitHub content
 
-GitHub Actions refreshes a public snapshot every six hours and saves `github.json` on the repository's separate `github-data` branch. The site reads that feed into a shared D1 cache. The next visitor can trigger a cache refresh; the owner's computer and browser do not need to be open. Concurrent requests share a refresh lease. The direct public GitHub API is a fallback. If a source is unavailable or rate-limited, the last successful data remains visible and retries back off.
+The **Refresh public GitHub data** Actions workflow updates a public snapshot every six hours and saves `github.json` on the separate `github-data` branch. It also supports **Run workflow** and refreshes when its workflow or source changes on `main`. A failed refresh keeps the previous feed.
+
+The website reads this fixed public feed through Next.js's persistent fetch cache, with a five-minute revalidation interval. Requests can refresh the cached feed without a new deployment. The feed's own timestamp determines freshness: data older than six hours is marked stale. If the feed request or validation fails, the site serves the validated snapshot in `content/github-fallback.json` and marks it stale. Refresh that committed fallback when a newer baseline is wanted.
 
 The nine selected projects keep their order and curated stage notes. Repository descriptions, primary languages, last-push dates, and archived status come from GitHub. Featured issue states and the latest SQLSage release refresh too. Up to three other public reports or pull requests authored by Figo5 appear as compact links.
 
 Acknowledgment wording, featured write-ups, experience, and favorites stay curated. An issue closing does not automatically become a confirmed security finding or a maintainer credit. Only public GitHub data is published. The Actions job uses its temporary repository-scoped token to refresh public API data and update the data branch; that token stays in the job. The website uses no GitHub credentials, and no private repository data is sent to visitors.
 
-The Actions workflow also supports **Run workflow** and refreshes when its source or workflow changes on `main`. A failed refresh keeps the previous feed. Data-branch commits do not trigger a website rebuild.
+## Historical Sites tooling
 
-## Website publication
-
-A Codex heartbeat checks `Figo5/gfiore.com`'s `main` branch hourly. It publishes only when the remote commit differs from the last successfully deployed commit. This is periodic polling rather than an immediate GitHub push hook. It needs the computer powered on, Codex running, and Sites available.
-
-GitHub is the source for code changes. The existing Sites project continues to own hosting, D1 data, runtime secrets, authentication, and the custom domains. No GitHub deployment secret is required.
-
-### Publisher runbook
-
-The automation prompt supplies the exact Site ID, workspace directory, and publisher-state file. Those installation-specific settings stay outside the public repository.
-
-1. Read the remote `main` SHA using `git ls-remote https://github.com/Figo5/gfiore.com.git refs/heads/main`. Compare it with the last successful GitHub commit in the local publisher-state JSON. When unchanged, finish quietly without rebuilding or republishing.
-2. For a changed commit, create a unique run directory inside the designated workspace's `work/auto-publish/runs/`. Clone the public repository into `source/` there. Use this clean clone instead of resetting an existing working checkout. Record the exact cloned commit.
-3. Read the Sites skill and the existing published Site. Preserve its audience, custom domains, runtime variables, and storage bindings. Obtain a fresh short-lived source credential and use the Sites source helper to open the same Site into the run's empty `hosted/` directory. Keep credentials in session memory and pass them to the helper through hidden stdin only.
-4. From the cloned GitHub source, run `node scripts/prepare-sites-sync.mjs --target <absolute-hosted-checkout> --project-id <exact-existing-site-id>`. The helper checks both repositories, preserves the live hosting manifest and ignored runtime files, rejects binding changes or unsafe source paths, mirrors committed regular files, and records the GitHub commit in `.openai/github-source.json` and `public/deployment.json`.
-5. Use the Sites source helper with its complete prior opening result. Run missing dependency installation, the Sites build helper, the TypeScript check, and the repository tests as ordered commands before it commits, pushes, and packages. Do not reuse build output from another commit. The existing profile table and saved favorites must remain intact; Sites applies the checked-in migrations during publication.
-6. Save the helper's exact pushed commit and matching archive with Sites, then deploy that saved version using the appropriate tool for the site's current audience. Wait for a terminal deployment result. If a version was already saved, retain and reuse its returned ID rather than saving it again.
-7. After success, read `https://gfiore.com/deployment.json?commit=<github-sha>` and the equivalent `www` URL. Both must report the tested GitHub commit. Verify the homepage and `/api/github` return successful responses, and `/api/profile` remains non-editable for anonymous visitors.
-8. Only after successful publication and readback, atomically update the local state JSON with `repository`, `branch`, `githubCommit`, `siteProjectId`, `siteCommit`, `versionId`, `deploymentId`, and `verifiedAt`. Report the new deployment. If a build or access check fails, do not publish. If publication or readback fails, retain the last successful state and report the actionable failure without bypassing approval or authentication. After a successful deployment with failed readback, restore the previously verified saved version when available and verify that rollback; never claim the old version is still live without checking.
-
-The publisher never pushes changes back to GitHub, changes DNS, changes site sharing, or edits owner secrets. It must preserve unfinished local work. A change to hosting bindings or capabilities needs a separate reviewed update.
-
-### Manual source preparation
-
-The sync helper prepares source only; it does not authenticate, push, deploy, or alter DNS. Its target must be a clean existing Sites checkout with the expected project ID. Its source must be a clean committed checkout of this repository. Use the supported Sites workflow for publication.
-
-```sh
-node scripts/prepare-sites-sync.mjs --target /absolute/path/to/hosted-checkout --project-id EXISTING_SITE_ID
-```
+The repository retains the earlier Sites sync helper, `.openai` hosting metadata, and D1 schema/migrations as historical tooling. They are not called by the Next.js runtime or Netlify build. The previous local polling publisher is not required for Git continuous deployment, and its state file is not a deployment authority.

@@ -312,6 +312,18 @@ function publishedPayload(value: unknown, now: number): CachedPayload {
   };
 }
 
+// The website consumes the same public envelope that the GitHub workflow writes.
+// Keep validation independent of the hosting adapter and its caching mechanism.
+export function parsePublishedGitHubSnapshot(value: unknown, now = Date.now()): GitHubSnapshot {
+  return snapshot(publishedPayload(value, now), now);
+}
+
+export async function readPublishedGitHubSnapshot(options: Pick<Options, "fetcher" | "now"> = {}): Promise<GitHubSnapshot> {
+  const now = (options.now || Date.now)();
+  const value = await requestSourceJson(PUBLISHED_FEED_URL, options.fetcher || fetch, now);
+  return parsePublishedGitHubSnapshot(value, now);
+}
+
 function reportFailure(source: string, error: unknown) {
   const category = error instanceof UpstreamError && error.status ? `HTTP ${error.status}` : "network or invalid response";
   console.warn(`Public GitHub source ${source}: ${category}.`);

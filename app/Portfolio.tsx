@@ -1,14 +1,8 @@
-"use client";
-
-import { useState } from "react";
-import type { FormEvent } from "react";
 import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
-type FavoriteItem = ProfileContent["albums"][number];
-type Editor = FavoriteCategory | null;
 
 type Project = { name: string; description: string; stack: string; url: string; stage?: string; notes?: string[] };
 type Finding = { project: string; title: string; description: string; status: string; type: string; url: string; number: string; issueKey?: string; release?: boolean };
@@ -33,10 +27,10 @@ const findings: Finding[] = [
   { project: "SQLSage", title: "v0.2.2 release", description: "A release of my PostgreSQL query explainer and optimizer CLI.", status: "Own-project release", type: "Release", url: "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2", number: "v0.2.2", release: true },
 ];
 
-const favoriteLabels: Record<FavoriteCategory, { title: string; singular: string; hint: string }> = {
-  albums: { title: "Favorite albums", singular: "album", hint: "Artist, year, or why it’s a favorite" },
-  movies: { title: "Favorite movies", singular: "movie", hint: "Director, year, or a short note" },
-  courses: { title: "Golf courses", singular: "course", hint: "Location or a short note" },
+const favoriteLabels: Record<FavoriteCategory, string> = {
+  albums: "Favorite albums",
+  movies: "Favorite movies",
+  courses: "Golf courses",
 };
 
 function safeLink(value: string): string | undefined {
@@ -52,52 +46,9 @@ function repositoryName(url: string) {
   return url.split("/").at(-1)?.toLowerCase() || "";
 }
 
-function isProfileContent(value: unknown): value is ProfileContent {
-  if (!value || typeof value !== "object") return false;
-  const content = value as Record<string, unknown>;
-  return typeof content.about === "string" && ["albums", "movies", "courses"].every(category => {
-    const items = content[category];
-    return Array.isArray(items) && items.every(item => item && typeof item === "object" && typeof item.title === "string" && typeof item.note === "string" && typeof item.url === "string");
-  });
-}
-
-export default function Portfolio({ initialProfile, canEdit, signInPath, github }: { initialProfile: ProfileContent; canEdit: boolean; signInPath: string; github: GitHubSnapshot }) {
-  const [profile, setProfile] = useState(initialProfile);
-  const [editor, setEditor] = useState<Editor>(null);
-  const [draftItems, setDraftItems] = useState<FavoriteItem[]>([]);
-  const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-
+export default function Portfolio({ initialProfile: profile, github }: { initialProfile: ProfileContent; github: GitHubSnapshot }) {
   const hasFavorites = profile.albums.length + profile.movies.length + profile.courses.length > 0;
   const displayedMedia = FAVORITE_MEDIA.filter(media => profile[media.category].some(item => getFavoriteMedia(media.category, item.title)?.src === media.src));
-
-  function beginEditor(section: Exclude<Editor, null>) {
-    if (saving) return;
-    setMessage(""); setError(""); setEditor(section);
-    setDraftItems(profile[section].length ? profile[section].map(item => ({ ...item })) : [{ title: "", note: "", url: "" }]);
-  }
-
-  function cancelEditor() { if (!saving) { setEditor(null); setError(""); } }
-
-  async function saveProfile(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!editor || saving) return;
-    const next = { ...profile, [editor]: draftItems.map(item => ({ title: item.title.trim(), note: item.note.trim(), url: item.url.trim() })) };
-    setSaving(true); setError(""); setMessage("");
-    try {
-      const response = await fetch("/api/profile", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(next) });
-      const responseBody: unknown = await response.json().catch(() => null);
-      const data = responseBody && typeof responseBody === "object" ? responseBody as Record<string, unknown> : null;
-      if (!response.ok || !data || !isProfileContent(data.profile)) throw new Error(typeof data?.error === "string" ? data.error : "Couldn’t save your changes. Please try again.");
-      setProfile(data.profile); setEditor(null); setMessage("Changes saved.");
-    } catch (cause) { setError(cause instanceof Error ? cause.message : "Couldn’t save your changes. Please try again."); }
-    finally { setSaving(false); }
-  }
-
-  function changeItem(index: number, field: keyof FavoriteItem, value: string) {
-    setDraftItems(items => items.map((item, itemIndex) => itemIndex === index ? { ...item, [field]: value } : item));
-  }
 
   return (
     <>
@@ -105,7 +56,7 @@ export default function Portfolio({ initialProfile, canEdit, signInPath, github 
       <div className="site-shell">
         <header className="site-header" id="top">
           <div className="identity"><h1>Gio Fiore</h1></div>
-          <nav className="profile-links" aria-label="Profile links">{(canEdit || hasFavorites) && <a href="#favorites-title">Favorites</a>}<a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav>
+          <nav className="profile-links" aria-label="Profile links">{hasFavorites && <a href="#favorites-title">Favorites</a>}<a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav>
         </header>
 
         <main id="main">
@@ -118,8 +69,6 @@ export default function Portfolio({ initialProfile, canEdit, signInPath, github 
             </div>
             <p className="education-line">Kent State University · B.S. Emerging Media & Technology, 2026 · Entrepreneurship minor</p>
           </section>
-
-          <p className="save-status" role="status" aria-live="polite">{message}</p>
 
           <div className="main-columns">
             <section className="projects-column" aria-labelledby="projects-title">
@@ -158,22 +107,22 @@ export default function Portfolio({ initialProfile, canEdit, signInPath, github 
             </aside>
           </div>
 
-          {(canEdit || hasFavorites) && <section className="favorites-section" aria-labelledby="favorites-title"><div className="favorites-heading"><h2 id="favorites-title">A few favorites</h2></div><div className="favorites-grid">{(["albums", "movies", "courses"] as FavoriteCategory[]).map(category => {
+          {hasFavorites && <section className="favorites-section" aria-labelledby="favorites-title"><div className="favorites-heading"><h2 id="favorites-title">A few favorites</h2></div><div className="favorites-grid">{(["albums", "movies", "courses"] as FavoriteCategory[]).map(category => {
             const label = favoriteLabels[category];
             const items = profile[category];
-            if (!canEdit && items.length === 0) return null;
-            return <section className="favorite-category" key={category} aria-labelledby={`${category}-title`}><div className="favorite-heading"><h3 id={`${category}-title`}>{label.title}</h3>{canEdit && editor !== category && <button className="quiet-button" type="button" onClick={() => beginEditor(category)} disabled={saving}>{items.length ? "Edit" : "+ Add"}</button>}</div>
-              {editor === category ? <form className="editor favorites-editor" onSubmit={saveProfile}>{draftItems.map((item, index) => <fieldset key={index}><legend>{label.singular[0].toUpperCase() + label.singular.slice(1)} {index + 1}</legend><label htmlFor={`${category}-${index}-title`}>{category === "courses" ? "Course" : "Title"}</label><input id={`${category}-${index}-title`} value={item.title} onChange={event => changeItem(index, "title", event.target.value)} maxLength={120} required disabled={saving} /><label htmlFor={`${category}-${index}-note`}>Note <span>(optional)</span></label><input id={`${category}-${index}-note`} value={item.note} onChange={event => changeItem(index, "note", event.target.value)} placeholder={label.hint} maxLength={240} disabled={saving} /><label htmlFor={`${category}-${index}-url`}>Link <span>(optional)</span></label><input id={`${category}-${index}-url`} value={item.url} onChange={event => changeItem(index, "url", event.target.value)} type="url" pattern="https://.*" placeholder="https://" maxLength={1500} disabled={saving} /><button className="remove-button" type="button" onClick={() => setDraftItems(current => current.filter((_, itemIndex) => itemIndex !== index))} disabled={saving}>Remove {label.singular}</button></fieldset>)}{draftItems.length < 6 && <button className="add-item-button" type="button" onClick={() => setDraftItems(current => [...current, { title: "", note: "", url: "" }])} disabled={saving}>+ Add {label.singular}</button>}<div className="editor-actions"><button className="secondary-button" type="button" onClick={cancelEditor} disabled={saving}>Cancel</button><button className="save-button" type="submit" disabled={saving}>{saving ? "Saving…" : "Save"}</button></div>{error && <p className="form-error" role="alert">{error}</p>}</form> : items.length ? <ul className={`favorite-gallery favorite-gallery-${category}`}>{items.map((item, index) => {
+            if (items.length === 0) return null;
+            return <section className="favorite-category" key={category} aria-labelledby={`${category}-title`}><div className="favorite-heading"><h3 id={`${category}-title`}>{label}</h3></div>
+              <ul className={`favorite-gallery favorite-gallery-${category}`}>{items.map((item, index) => {
                 const media = getFavoriteMedia(category, item.title);
                 const target = safeLink(item.url) || media?.sourceUrl;
                 const content = <>{media ? <img className="favorite-art" src={media.src} alt={media.alt} width={300} height={category === "movies" ? 450 : category === "courses" ? 200 : 300} loading="lazy" decoding="async" /> : <span className="favorite-art favorite-art-empty" aria-hidden="true">{item.title.slice(0, 1)}</span>}<span className="favorite-caption"><span className="favorite-name">{item.title}</span>{item.note && <span className="favorite-note">{item.note}</span>}</span></>;
                 return <li key={`${item.title}-${index}`}>{target ? <a className="favorite-tile" href={target} target="_blank" rel="noopener noreferrer" aria-label={`View ${item.title}`}>{content}</a> : <div className="favorite-tile">{content}</div>}</li>;
-              })}</ul> : <p className="favorite-empty">Add your favorite {category === "courses" ? "courses" : category}.</p>}
+              })}</ul>
             </section>;
           })}</div>{displayedMedia.length > 0 && <details className="image-credits"><summary>Image sources</summary><ul>{displayedMedia.map(media => <li key={media.src}><a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{media.title}</a><span> — {media.credit}{media.licenseUrl && <> · <a href={media.licenseUrl} target="_blank" rel="noopener noreferrer">{media.license}</a></>}</span></li>)}</ul></details>}</section>}
         </main>
 
-        <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a>{!canEdit && <a href={signInPath} target="_top">Owner sign-in</a>}<a href="#top">Back to top</a></div></footer>
+        <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/Figo5/gfiore.com/edit/main/content/favorites.json" target="_blank" rel="noopener noreferrer">Edit favorites</a><a href="#top">Back to top</a></div></footer>
       </div>
     </>
   );

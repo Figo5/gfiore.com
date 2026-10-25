@@ -1,0 +1,7 @@
+[build]
+  command = "npm test && npm run typecheck && npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "24"
+
