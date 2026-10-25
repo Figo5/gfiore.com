@@ -11,6 +11,7 @@ const compiled = ts.transpileModule(readFileSync(new URL("../app/github-data-cor
 const { readGitHubSnapshotFromDb } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString("base64")}`);
 const HOUR = 60 * 60 * 1000;
 const START = Date.UTC(2026, 9, 25, 17);
+const FEED_URL = "https://raw.githubusercontent.com/Figo5/gfiore.com/github-data/github.json";
 
 function database() {
   const sqlite = new DatabaseSync(":memory:");
@@ -88,6 +89,36 @@ function publicFetch(data = fixtures(), overrides = {}) {
     throw new Error(`Unexpected endpoint: ${path}`);
   };
   return { fetcher, calls };
+}
+
+function publishedSnapshot(fetchedAt = new Date(START - HOUR).toISOString()) {
+  const sourceDate = new Date(Date.parse(fetchedAt) - HOUR).toISOString();
+  const issueSources = [
+    ["follow-redirects", "follow-redirects", 294], ["oapi-codegen", "nethttp-middleware", 89],
+    ["mafintosh", "tar-fs", 122], ["nodejs", "node", 66853],
+  ];
+  return {
+    repositories: { sqlsage: { description: "Scheduled public data", language: "TypeScript", pushedAt: sourceDate, archived: false, url: "https://github.com/Figo5/sqlsage" } },
+    issues: Object.fromEntries(issueSources.map(([owner, repo, number]) => [`${owner}/${repo}#${number}`, { state: "open", url: `https://github.com/${owner}/${repo}/issues/${number}`, updatedAt: sourceDate }])),
+    contributions: [{ title: "A public report", url: "https://github.com/external/report/issues/1", repository: "external/report", action: "Public report", occurredAt: sourceDate }],
+    latestRelease: { tag: "v0.2.2", name: "SQLSage v0.2.2", url: "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2", publishedAt: sourceDate },
+    fetchedAt, stale: false,
+  };
+}
+
+function withFeed(feed, api = publicFetch(), contentType = "text/plain; charset=utf-8") {
+  const calls = [];
+  return {
+    calls,
+    api,
+    fetcher: async (url, options) => {
+      calls.push(url);
+      if (url !== FEED_URL) return api.fetcher(url, options);
+      assert.equal(options.redirect, "manual");
+      assert.equal(options.headers.Authorization, undefined);
+      return new Response(JSON.stringify(typeof feed === "function" ? feed() : feed), { headers: { "Content-Type": contentType } });
+    },
+  };
 }
 
 test("cold refresh persists public data, excludes duplicate featured reports, and retains profile data", async () => {
@@ -198,4 +229,91 @@ test("a failed final cache write keeps the prior snapshot and the claim's durabl
   assert.equal(db.sqlite.prepare("SELECT next_refresh_at FROM github_snapshot").get().next_refresh_at, now + HOUR / 2);
   await readGitHubSnapshotFromDb(db, { fetcher: upstream.fetcher, now: () => now + 60_000 });
   assert.equal(upstream.calls.length, 7);
+});
+
+test("hosted reads use one bounded text/plain feed request and cache until the source timestamp expires", async () => {
+  const db = database();
+  const feed = publishedSnapshot();
+  feed.ignoredField = "not projected into public responses";
+  feed.repositories.sqlsage.ignoredField = "not projected into public responses";
+  const upstream = withFeed(feed);
+  const snapshot = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START });
+  assert.equal(snapshot.stale, false);
+  assert.equal(snapshot.fetchedAt, feed.fetchedAt);
+  assert.equal(snapshot.repositories.sqlsage.description, "Scheduled public data");
+  assert.equal(Object.hasOwn(snapshot, "ignoredField"), false);
+  assert.equal(Object.hasOwn(snapshot.repositories.sqlsage, "ignoredField"), false);
+  assert.deepEqual(upstream.calls, [FEED_URL]);
+  assert.equal(upstream.api.calls.length, 0);
+  assert.equal(db.sqlite.prepare("SELECT next_refresh_at FROM github_snapshot").get().next_refresh_at, START + 5 * HOUR);
+  const cached = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START + HOUR });
+  assert.deepEqual(cached, snapshot);
+  assert.deepEqual(upstream.calls, [FEED_URL]);
+});
+
+test("future timestamps, foreign links, and incomplete published feeds fall back to the direct API", async t => {
+  const mutations = {
+    future: feed => { feed.fetchedAt = new Date(START + 1).toISOString(); },
+    foreignLink: feed => { feed.repositories.sqlsage.url = "https://example.com/Figo5/sqlsage"; },
+    incomplete: feed => { delete feed.issues["nodejs/node#66853"]; },
+  };
+  for (const [name, mutate] of Object.entries(mutations)) {
+    await t.test(name, async () => {
+      const db = database();
+      const feed = publishedSnapshot();
+      mutate(feed);
+      const upstream = withFeed(feed);
+      const snapshot = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START });
+      assert.equal(snapshot.stale, false);
+      assert.equal(snapshot.fetchedAt, new Date(START).toISOString());
+      assert.equal(snapshot.repositories.sqlsage.description, "Query tools v0.2.2");
+      assert.equal(upstream.calls.length, 8);
+      assert.equal(upstream.api.calls.length, 7);
+    });
+  }
+});
+
+test("an old published feed remains visibly stale during an API outage and retries after thirty minutes", async () => {
+  const db = database();
+  let feed = publishedSnapshot(new Date(START - 7 * HOUR).toISOString());
+  const api = publicFetch(fixtures(), { handle: () => new Response("unavailable", { status: 503 }) });
+  const upstream = withFeed(() => feed, api);
+  const snapshot = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START });
+  assert.equal(snapshot.stale, true);
+  assert.equal(snapshot.fetchedAt, feed.fetchedAt);
+  assert.equal(snapshot.repositories.sqlsage.description, "Scheduled public data");
+  assert.equal(Object.keys(snapshot.issues).length, 4);
+  assert.equal(snapshot.latestRelease.tag, "v0.2.2");
+  assert.equal(upstream.calls.length, 8);
+  assert.equal(db.sqlite.prepare("SELECT next_refresh_at FROM github_snapshot").get().next_refresh_at, START + HOUR / 2);
+  await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START + 1000 });
+  assert.equal(upstream.calls.length, 8);
+  feed = publishedSnapshot(new Date(START + HOUR / 2).toISOString());
+  const recovered = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START + HOUR / 2 });
+  assert.equal(recovered.stale, false);
+  assert.equal(recovered.fetchedAt, feed.fetchedAt);
+  assert.equal(upstream.calls.length, 9);
+  assert.equal(upstream.api.calls.length, 7);
+});
+
+test("failed feed and API requests retain the prior complete D1 snapshot", async () => {
+  const db = database();
+  const initial = withFeed(publishedSnapshot());
+  const saved = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: initial.fetcher, now: () => START });
+  let requests = 0;
+  const failedFetch = async () => { requests += 1; return new Response("unavailable", { status: 503 }); };
+  const cached = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: failedFetch, now: () => START + 6 * HOUR });
+  assert.deepEqual(cached, { ...saved, stale: true });
+  assert.equal(requests, 8);
+});
+
+test("the hosted feed cache does not inherit the old incomplete cache's retry deadline", async () => {
+  const db = database();
+  db.sqlite.prepare("INSERT INTO github_snapshot (id, payload, next_refresh_at, lease_until) VALUES (?, NULL, ?, 0)").run("public-github-v1", START + 24 * HOUR);
+  const upstream = withFeed(publishedSnapshot());
+  const snapshot = await readGitHubSnapshotFromDb(db, { usePublishedFeed: true, fetcher: upstream.fetcher, now: () => START });
+  assert.equal(snapshot.stale, false);
+  assert.deepEqual(upstream.calls, [FEED_URL]);
+  assert.equal(db.sqlite.prepare("SELECT COUNT(*) AS count FROM github_snapshot").get().count, 2);
+  assert.equal(db.sqlite.prepare("SELECT owner_user_id FROM profile").get().owner_user_id, "owner");
 });
