@@ -36,6 +36,7 @@ const privateReports = [
   { project: "Kong", repository: "Kong/kong" },
   { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
   { project: "kin-openapi", repository: "getkin/kin-openapi" },
+  { project: "happy-dom", repository: "capricorn86/happy-dom" },
 ];
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
