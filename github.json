@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-10-25T20:54:53.000Z",
+      "pushedAt": "2026-10-26T04:53:38.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -100,6 +100,16 @@
     }
   },
   "issues": {
+    "oapi-codegen/nethttp-middleware#89": {
+      "state": "open",
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
+    },
+    "nodejs/node#66853": {
+      "state": "open",
+      "url": "https://github.com/nodejs/node/issues/66853",
+      "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
@@ -109,19 +119,16 @@
       "state": "closed",
       "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
       "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
-    "nodejs/node#66853": {
-      "state": "open",
-      "url": "https://github.com/nodejs/node/issues/66853",
-      "updatedAt": "2026-10-19T16:12:40.000Z"
-    },
-    "oapi-codegen/nethttp-middleware#89": {
-      "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
     }
   },
   "contributions": [
+    {
+      "title": "extractAllTo silently drops an entry when two names normalize to the same path",
+      "url": "https://github.com/cthackers/adm-zip/issues/587",
+      "repository": "cthackers/adm-zip",
+      "action": "Public report",
+      "occurredAt": "2026-10-21T15:55:06.000Z"
+    },
     {
       "title": "extractAll writes through a pre-existing dangling destination symlink (canonical-path guard bypass)",
       "url": "https://github.com/srikanth-lingala/zip4j/issues/594",
@@ -135,13 +142,6 @@
       "repository": "antelle/node-stream-zip",
       "action": "Public report",
       "occurredAt": "2026-10-23T19:40:43.000Z"
-    },
-    {
-      "title": "v2.9.8 is tagged but has no release; v2.9.7 still trusts the distrusted eMudhra root",
-      "url": "https://github.com/denoland/deno/issues/37056",
-      "repository": "denoland/deno",
-      "action": "Public report",
-      "occurredAt": "2026-10-21T14:21:58.000Z"
     }
   ],
   "latestRelease": {
@@ -150,6 +150,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-26T04:53:37.164Z",
+  "fetchedAt": "2026-10-26T13:10:32.121Z",
   "stale": false
 }
