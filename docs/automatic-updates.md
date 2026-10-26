@@ -42,6 +42,8 @@ When investigating a failed build, use the Netlify deploy log for the failing co
 
 Experience, selected projects, and featured findings are curated in `app/Portfolio.tsx`. Favorites are stored in `content/favorites.json`; the initial file preserves the existing published favorites. The footer's **Edit favorites** link opens this file in GitHub. Keep each favorite's `title`, `note`, and `url` fields; use an empty string for optional notes or links.
 
+The **Private reports in triage** section is an owner-approved, dated snapshot of project names and accepted reporter credits. It links to the public project repositories and omits private advisory identifiers, report titles, and technical details. Update this curated section when a report is published or its status changes; accepting credit alone does not publish an advisory or confirm its findings.
+
 Album covers, movie posters, and course photos are matched by title in `app/favorite-media.ts`, with local files under `public/favorites/`. Add media and its attribution there when adding favorites that need new images. A title without matching artwork displays a simple initial tile.
 
 The application has no browser editor, runtime database, or writable profile API. GitHub repository permissions control who can change the content. No owner runtime secret or identity headers are used.
@@ -54,7 +56,7 @@ The website reads this fixed public feed through Next.js's persistent fetch cach
 
 The nine selected projects keep their order and curated stage notes. Repository descriptions, primary languages, last-push dates, and archived status come from GitHub. Featured issue states and the latest SQLSage release refresh too. Up to three other public reports or pull requests authored by Figo5 appear as compact links.
 
-Acknowledgment wording, featured write-ups, experience, and favorites stay curated. An issue closing does not automatically become a confirmed security finding or a maintainer credit. Only public GitHub data is published. The Actions job uses its temporary repository-scoped token to refresh public API data and update the data branch; that token stays in the job. The website uses no GitHub credentials, and no private repository data is sent to visitors.
+Acknowledgment wording, featured write-ups, experience, favorites, and the dated private-report list stay curated. An issue closing does not automatically become a confirmed security finding or a maintainer credit. The automatic feed publishes only public GitHub data. The Actions job uses its temporary repository-scoped token to refresh public API data and update the data branch; that token stays in the job. The website uses no GitHub credentials, and private report bodies are not sent to visitors.
 
 ## Historical Sites tooling
 

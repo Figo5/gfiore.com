@@ -27,6 +27,17 @@ const findings: Finding[] = [
   { project: "SQLSage", title: "v0.2.2 release", description: "A release of my PostgreSQL query explainer and optimizer CLI.", status: "Own-project release", type: "Release", url: "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2", number: "v0.2.2", release: true },
 ];
 
+const privateReports = [
+  { project: "validator.js", repository: "validatorjs/validator.js" },
+  { project: "node-tar", repository: "isaacs/node-tar" },
+  { project: "python-multipart", repository: "Kludex/python-multipart" },
+  { project: "safehtml", repository: "google/safehtml" },
+  { project: "liquidjs", repository: "harttle/liquidjs" },
+  { project: "Kong", repository: "Kong/kong" },
+  { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
+  { project: "kin-openapi", repository: "getkin/kin-openapi" },
+];
+
 const favoriteLabels: Record<FavoriteCategory, string> = {
   albums: "Favorite albums",
   movies: "Favorite movies",
@@ -89,7 +100,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
 
             <aside className="findings-column" aria-labelledby="findings-title">
               <div className="column-heading"><h2 id="findings-title">Findings & contributions</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <p className="column-intro">Public reports, acknowledgments, and things I’ve released.</p>
+              <p className="column-intro">Public contributions, private security reports, and things I’ve released.</p>
               <div className="findings-list">{findings.map(finding => {
                 const issue = finding.issueKey ? github.issues[finding.issueKey.toLowerCase()] : undefined;
                 const release = finding.release ? github.latestRelease : null;
@@ -99,6 +110,13 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
                 const status = issue ? `${finding.status.split(" · ")[0]} · ${issue.state === "closed" ? "Closed" : "Open"}` : finding.status;
                 return <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><span>{finding.type}</span></div><h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{status}</span><a href={url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} ${finding.type === "Release" ? "release" : "issue"} ${number}`}>{number}</a></div></article>;
               })}</div>
+              <section className="private-advisories" aria-labelledby="private-advisories-title">
+                <h3 id="private-advisories-title">Private reports in triage</h3>
+                <p>Reporter credit accepted on {privateReports.length} private security reports. All are awaiting maintainer review; none is published yet.</p>
+                <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>Reporter credit accepted</span></li>)}</ul>
+                <p className="private-advisories-note">Status checked October 26, 2026. Technical details remain private.</p>
+                <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
+              </section>
               {github.contributions.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
                 <h3 id="recent-reports-title">Recent public reports</h3>
                 <ul>{github.contributions.map(contribution => <li key={contribution.url}><div><span>{contribution.repository}</span><span>{contribution.action}</span></div><a href={contribution.url} target="_blank" rel="noopener noreferrer">{contribution.title}</a>{shortDate(contribution.occurredAt) && <time dateTime={contribution.occurredAt}>{shortDate(contribution.occurredAt)}</time>}</li>)}</ul>
