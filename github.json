@@ -1,9 +1,16 @@
 {
   "repositories": {
+    "kubernetes": {
+      "description": "Production-Grade Container Scheduling and Management",
+      "language": null,
+      "pushedAt": "2026-10-26T18:05:27.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/kubernetes"
+    },
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-10-26T04:53:38.000Z",
+      "pushedAt": "2026-10-26T14:07:05.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -105,6 +112,11 @@
       "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
       "updatedAt": "2026-10-24T11:09:52.000Z"
     },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
+    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
@@ -114,34 +126,29 @@
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
-    },
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
     }
   },
   "contributions": [
+    {
+      "title": "admission: AlwaysPullImages: support ephemeral containers",
+      "url": "https://github.com/kubernetes/kubernetes/pull/143422",
+      "repository": "kubernetes/kubernetes",
+      "action": "Pull request",
+      "occurredAt": "2026-10-26T15:32:21.000Z"
+    },
+    {
+      "title": "nodedeclaredfeatures: validate the pods/ephemeralcontainers subresource",
+      "url": "https://github.com/kubernetes/kubernetes/pull/143424",
+      "repository": "kubernetes/kubernetes",
+      "action": "Pull request",
+      "occurredAt": "2026-10-26T16:21:28.000Z"
+    },
     {
       "title": "extractAllTo silently drops an entry when two names normalize to the same path",
       "url": "https://github.com/cthackers/adm-zip/issues/587",
       "repository": "cthackers/adm-zip",
       "action": "Public report",
       "occurredAt": "2026-10-21T15:55:06.000Z"
-    },
-    {
-      "title": "extractAll writes through a pre-existing dangling destination symlink (canonical-path guard bypass)",
-      "url": "https://github.com/srikanth-lingala/zip4j/issues/594",
-      "repository": "srikanth-lingala/zip4j",
-      "action": "Public report",
-      "occurredAt": "2026-10-23T22:56:40.000Z"
-    },
-    {
-      "title": "Extraction writes through a pre-existing destination symlink (arbitrary file write outside the target)",
-      "url": "https://github.com/antelle/node-stream-zip/issues/118",
-      "repository": "antelle/node-stream-zip",
-      "action": "Public report",
-      "occurredAt": "2026-10-23T19:40:43.000Z"
     }
   ],
   "latestRelease": {
@@ -150,6 +157,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-26T13:10:32.121Z",
+  "fetchedAt": "2026-10-26T22:43:25.223Z",
   "stale": false
 }
