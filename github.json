@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-10-27T05:11:53.000Z",
+      "pushedAt": "2026-10-27T12:24:33.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -107,15 +107,15 @@
     }
   },
   "issues": {
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     },
     "mafintosh/tar-fs#122": {
       "state": "open",
@@ -157,6 +157,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-27T12:18:46.194Z",
+  "fetchedAt": "2026-10-27T22:18:48.093Z",
   "stale": false
 }
