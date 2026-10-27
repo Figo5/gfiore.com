@@ -1,18 +1,18 @@
 {
   "repositories": {
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-26T23:43:57.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
+    },
     "kubernetes": {
       "description": "Production-Grade Container Scheduling and Management",
       "language": null,
       "pushedAt": "2026-10-26T18:05:27.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/kubernetes"
-    },
-    "gfiore.com": {
-      "description": "My personal website: experience, projects, findings, and favorites.",
-      "language": "TypeScript",
-      "pushedAt": "2026-10-26T14:07:05.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gfiore.com"
     },
     "figo5": {
       "description": "Tools and side projects.",
@@ -107,28 +107,35 @@
     }
   },
   "issues": {
-    "oapi-codegen/nethttp-middleware#89": {
-      "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
-    },
     "follow-redirects/follow-redirects#294": {
       "state": "closed",
       "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
       "updatedAt": "2026-10-22T15:08:10.000Z"
+    },
+    "mafintosh/tar-fs#122": {
+      "state": "open",
+      "url": "https://github.com/mafintosh/tar-fs/issues/122",
+      "updatedAt": "2026-10-23T18:17:28.000Z"
     },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
     },
-    "mafintosh/tar-fs#122": {
+    "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
-      "url": "https://github.com/mafintosh/tar-fs/issues/122",
-      "updatedAt": "2026-10-23T18:17:28.000Z"
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
     }
   },
   "contributions": [
+    {
+      "title": "copyInput reintroduces __proto__ assignment for object input (regression of the 6.15.3 fix)",
+      "url": "https://github.com/ljharb/qs/issues/633",
+      "repository": "ljharb/qs",
+      "action": "Public report",
+      "occurredAt": "2026-10-21T20:41:28.000Z"
+    },
     {
       "title": "admission: AlwaysPullImages: support ephemeral containers",
       "url": "https://github.com/kubernetes/kubernetes/pull/143422",
@@ -142,13 +149,6 @@
       "repository": "kubernetes/kubernetes",
       "action": "Pull request",
       "occurredAt": "2026-10-26T16:21:28.000Z"
-    },
-    {
-      "title": "extractAllTo silently drops an entry when two names normalize to the same path",
-      "url": "https://github.com/cthackers/adm-zip/issues/587",
-      "repository": "cthackers/adm-zip",
-      "action": "Public report",
-      "occurredAt": "2026-10-21T15:55:06.000Z"
     }
   ],
   "latestRelease": {
@@ -157,6 +157,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-26T22:43:25.223Z",
+  "fetchedAt": "2026-10-27T05:11:50.702Z",
   "stale": false
 }
