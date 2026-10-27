@@ -62,6 +62,7 @@ function repositoryName(url: string) {
 export default function Portfolio({ initialProfile: profile, github }: { initialProfile: ProfileContent; github: GitHubSnapshot }) {
   const hasFavorites = profile.albums.length + profile.movies.length + profile.courses.length > 0;
   const displayedMedia = FAVORITE_MEDIA.filter(media => profile[media.category].some(item => getFavoriteMedia(media.category, item.title)?.src === media.src));
+  const recentReports = github.contributions.filter(contribution => !findings.some(finding => finding.url.split("#")[0] === contribution.url));
 
   return (
     <>
@@ -119,9 +120,9 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
                 <p className="private-advisories-note">Status checked October 26, 2026. Technical details remain private.</p>
                 <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
               </section>
-              {github.contributions.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
+              {recentReports.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
                 <h3 id="recent-reports-title">Recent public reports</h3>
-                <ul>{github.contributions.map(contribution => <li key={contribution.url}><div><span>{contribution.repository}</span><span>{contribution.action}</span></div><a href={contribution.url} target="_blank" rel="noopener noreferrer">{contribution.title}</a>{shortDate(contribution.occurredAt) && <time dateTime={contribution.occurredAt}>{shortDate(contribution.occurredAt)}</time>}</li>)}</ul>
+                <ul>{recentReports.map(contribution => <li key={contribution.url}><div><span>{contribution.repository}</span><span>{contribution.action}</span></div><a href={contribution.url} target="_blank" rel="noopener noreferrer">{contribution.title}</a>{shortDate(contribution.occurredAt) && <time dateTime={contribution.occurredAt}>{shortDate(contribution.occurredAt)}</time>}</li>)}</ul>
               </section>}
               <p className="dated-note">{github.fetchedAt ? `${github.stale ? "Last synced" : "GitHub updated"} ${shortDate(github.fetchedAt)}.` : "Featured reports reviewed October 24, 2026."}</p>
             </aside>
