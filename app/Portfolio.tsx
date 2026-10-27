@@ -20,6 +20,7 @@ const projects: Project[] = [
 ];
 
 const findings: Finding[] = [
+  { project: "qs", title: "Object-input prototype assignment", description: "Reported an object-input parsing regression. The merged upstream fix references my report.", status: "Report addressed · Fix merged", type: "Contribution", url: "https://github.com/ljharb/qs/issues/633", number: "#633" },
   { project: "follow-redirects", title: "Affected-version correction", description: "Compared redirect-header behavior across releases and reported an affected-range gap.", status: "Maintainer acknowledged · Completed", type: "Acknowledgment", url: "https://github.com/follow-redirects/follow-redirects/issues/294#issuecomment-6344092099", number: "#294", issueKey: "follow-redirects/follow-redirects#294" },
   { project: "oapi-codegen", title: "Middleware routing analysis", description: "Contributed an analysis of how middleware and request routing interpret encoded paths.", status: "Public contribution · Awaiting response", type: "Contribution", url: "https://github.com/oapi-codegen/nethttp-middleware/issues/89#issuecomment-6383483915", number: "#89", issueKey: "oapi-codegen/nethttp-middleware#89" },
   { project: "tar-fs", title: "Archive extraction version matrix", description: "Documented a destination-symlink regression and the versions affected.", status: "Public report · Awaiting response", type: "Finding", url: "https://github.com/mafintosh/tar-fs/issues/122", number: "#122", issueKey: "mafintosh/tar-fs#122" },
