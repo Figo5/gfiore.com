@@ -1,11 +1,12 @@
 import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
+import CursorFollower from "./CursorFollower";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
 
 type Project = { name: string; description: string; stack: string; url: string; stage?: string; notes?: string[] };
-type Finding = { project: string; title: string; description: string; status: string; type: string; url: string; number: string; issueKey?: string; release?: boolean };
+type Finding = { project: string; title: string; description: string; status: string; type: string; url: string; number: string; issueKey?: string };
 
 const projects: Project[] = [
   { name: "FairwayOS", description: "A golf-video analysis prototype for tracking the ball, clubhead, golfer, and cup.", stack: "Python · Computer vision", url: "https://github.com/Figo5/fairwayos", stage: "Prototype", notes: ["Development is paused at a research checkpoint."] },
@@ -25,7 +26,6 @@ const findings: Finding[] = [
   { project: "oapi-codegen", title: "Middleware routing analysis", description: "Contributed an analysis of how middleware and request routing interpret encoded paths.", status: "Public contribution · Awaiting response", type: "Contribution", url: "https://github.com/oapi-codegen/nethttp-middleware/issues/89#issuecomment-6383483915", number: "#89", issueKey: "oapi-codegen/nethttp-middleware#89" },
   { project: "tar-fs", title: "Archive extraction version matrix", description: "Documented a destination-symlink regression and the versions affected.", status: "Public report · Awaiting response", type: "Finding", url: "https://github.com/mafintosh/tar-fs/issues/122", number: "#122", issueKey: "mafintosh/tar-fs#122" },
   { project: "Node.js", title: "NO_PROXY loopback matching", description: "Reported loopback hostname forms that do not match NO_PROXY as expected.", status: "Correctness report · Awaiting response", type: "Contribution", url: "https://github.com/nodejs/node/issues/66853", number: "#66853", issueKey: "nodejs/node#66853" },
-  { project: "SQLSage", title: "v0.2.2 release", description: "A release of my PostgreSQL query explainer and optimizer CLI.", status: "Own-project release", type: "Release", url: "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2", number: "v0.2.2", release: true },
 ];
 
 const privateReports: { project: string; repository: string; count?: number; closed?: number }[] = [
@@ -73,6 +73,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
 
   return (
     <>
+      <CursorFollower />
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="site-shell">
         <header className="site-header" id="top">
@@ -110,15 +111,11 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
 
             <aside className="findings-column" aria-labelledby="findings-title">
               <div className="column-heading"><h2 id="findings-title">Findings & contributions</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <p className="column-intro">Public contributions, private security reports, and things I’ve released.</p>
+              <p className="column-intro">Public contributions and private security reports.</p>
               <div className="findings-list">{findings.map(finding => {
                 const issue = finding.issueKey ? github.issues[finding.issueKey.toLowerCase()] : undefined;
-                const release = finding.release ? github.latestRelease : null;
-                const title = release ? `${release.tag} release` : finding.title;
-                const url = release?.url || finding.url;
-                const number = release?.tag || finding.number;
                 const status = issue ? `${finding.status.split(" · ")[0]} · ${issue.state === "closed" ? "Closed" : "Open"}` : finding.status;
-                return <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><span>{finding.type}</span></div><h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{status}</span><a href={url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} ${finding.type === "Release" ? "release" : "issue"} ${number}`}>{number}</a></div></article>;
+                return <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><span>{finding.type}</span></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{status}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} issue ${finding.number}`}>{finding.number}</a></div></article>;
               })}</div>
               <section className="private-advisories" aria-labelledby="private-advisories-title">
                 <h3 id="private-advisories-title">Private report credits</h3>
