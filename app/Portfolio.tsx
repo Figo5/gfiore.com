@@ -39,6 +39,7 @@ const privateReports: { project: string; repository: string; count?: number }[] 
   { project: "kin-openapi", repository: "getkin/kin-openapi" },
   { project: "happy-dom", repository: "capricorn86/happy-dom" },
   { project: "SvelteKit", repository: "sveltejs/kit" },
+  { project: "SVGO", repository: "svg/svgo" },
 ];
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
