@@ -73,7 +73,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
       <div className="site-shell">
         <header className="site-header" id="top">
           <div className="identity"><h1>Gio Fiore</h1></div>
-          <nav className="profile-links" aria-label="Profile links">{hasFavorites && <a href="#favorites-title">Favorites</a>}<a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav>
+          <nav className="profile-links" aria-label="Profile links">{hasFavorites && <a href="#favorites-title">Favorites</a>}<a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://stackoverflow.com/users/33244143/gio-fiore" target="_blank" rel="noopener noreferrer">Stack Overflow</a></nav>
         </header>
 
         <main id="main">
@@ -146,7 +146,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
           })}</div>{displayedMedia.length > 0 && <details className="image-credits"><summary>Image sources</summary><ul>{displayedMedia.map(media => <li key={media.src}><a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{media.title}</a><span> — {media.credit}{media.licenseUrl && <> · <a href={media.licenseUrl} target="_blank" rel="noopener noreferrer">{media.license}</a></>}</span></li>)}</ul></details>}</section>}
         </main>
 
-        <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/Figo5/gfiore.com/edit/main/content/favorites.json" target="_blank" rel="noopener noreferrer">Edit favorites</a><a href="#top">Back to top</a></div></footer>
+        <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://stackoverflow.com/users/33244143/gio-fiore" target="_blank" rel="noopener noreferrer">Stack Overflow</a><a href="https://github.com/Figo5/gfiore.com/edit/main/content/favorites.json" target="_blank" rel="noopener noreferrer">Edit favorites</a><a href="#top">Back to top</a></div></footer>
       </div>
     </>
   );
