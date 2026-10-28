@@ -38,6 +38,7 @@ const privateReports = [
   { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
   { project: "kin-openapi", repository: "getkin/kin-openapi" },
   { project: "happy-dom", repository: "capricorn86/happy-dom" },
+  { project: "SvelteKit", repository: "sveltejs/kit" },
 ];
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
@@ -117,7 +118,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
                 <h3 id="private-advisories-title">Private reports in triage</h3>
                 <p>Reporter credit accepted on {privateReports.length} private security reports. All are awaiting maintainer review; none is published yet.</p>
                 <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>Reporter credit accepted</span></li>)}</ul>
-                <p className="private-advisories-note">Status checked October 26, 2026. Technical details remain private.</p>
+                <p className="private-advisories-note">Status checked October 27, 2026. Technical details remain private.</p>
                 <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
               </section>
               {recentReports.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
