@@ -28,12 +28,12 @@ const findings: Finding[] = [
   { project: "SQLSage", title: "v0.2.2 release", description: "A release of my PostgreSQL query explainer and optimizer CLI.", status: "Own-project release", type: "Release", url: "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2", number: "v0.2.2", release: true },
 ];
 
-const privateReports: { project: string; repository: string; count?: number }[] = [
+const privateReports: { project: string; repository: string; count?: number; closed?: number }[] = [
   { project: "validator.js", repository: "validatorjs/validator.js" },
   { project: "node-tar", repository: "isaacs/node-tar" },
   { project: "python-multipart", repository: "Kludex/python-multipart" },
   { project: "safehtml", repository: "google/safehtml" },
-  { project: "liquidjs", repository: "harttle/liquidjs", count: 2 },
+  { project: "liquidjs", repository: "harttle/liquidjs", count: 2, closed: 1 },
   { project: "Kong", repository: "Kong/kong" },
   { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
   { project: "kin-openapi", repository: "getkin/kin-openapi" },
@@ -41,7 +41,11 @@ const privateReports: { project: string; repository: string; count?: number }[] 
   { project: "SvelteKit", repository: "sveltejs/kit" },
   { project: "SVGO", repository: "svg/svgo" },
   { project: "SiYuan", repository: "siyuan-note/siyuan" },
+  { project: "simple-git", repository: "steveukx/git-js" },
 ];
+
+const privateReportCount = privateReports.reduce((total, report) => total + (report.count ?? 1), 0);
+const closedPrivateReportCount = privateReports.reduce((total, report) => total + (report.closed ?? 0), 0);
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
   albums: "Favorite albums",
@@ -117,10 +121,10 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
                 return <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><span>{finding.type}</span></div><h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{status}</span><a href={url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} ${finding.type === "Release" ? "release" : "issue"} ${number}`}>{number}</a></div></article>;
               })}</div>
               <section className="private-advisories" aria-labelledby="private-advisories-title">
-                <h3 id="private-advisories-title">Private reports in triage</h3>
-                <p>Reporter credit accepted on {privateReports.reduce((total, report) => total + (report.count ?? 1), 0)} private security reports. All are awaiting maintainer review; none is published yet.</p>
+                <h3 id="private-advisories-title">Private report credits</h3>
+                <p>Reporter credit invitations accepted for {privateReportCount} private security reports. {privateReportCount - closedPrivateReportCount} remain in triage and {closedPrivateReportCount} is closed. None has been published.</p>
                 <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>{report.count && report.count > 1 ? `${report.count} reporter credits accepted` : "Reporter credit accepted"}</span></li>)}</ul>
-                <p className="private-advisories-note">Updated October 28, 2026. Technical details remain private.</p>
+                <p className="private-advisories-note">Updated October 28, 2026. Credit acceptance is separate from maintainer validation. Technical details remain private.</p>
                 <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
               </section>
               {recentReports.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
