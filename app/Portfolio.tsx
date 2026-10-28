@@ -40,6 +40,7 @@ const privateReports: { project: string; repository: string; count?: number }[] 
   { project: "happy-dom", repository: "capricorn86/happy-dom" },
   { project: "SvelteKit", repository: "sveltejs/kit" },
   { project: "SVGO", repository: "svg/svgo" },
+  { project: "SiYuan", repository: "siyuan-note/siyuan" },
 ];
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
