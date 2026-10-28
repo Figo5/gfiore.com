@@ -28,12 +28,12 @@ const findings: Finding[] = [
   { project: "SQLSage", title: "v0.2.2 release", description: "A release of my PostgreSQL query explainer and optimizer CLI.", status: "Own-project release", type: "Release", url: "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2", number: "v0.2.2", release: true },
 ];
 
-const privateReports = [
+const privateReports: { project: string; repository: string; count?: number }[] = [
   { project: "validator.js", repository: "validatorjs/validator.js" },
   { project: "node-tar", repository: "isaacs/node-tar" },
   { project: "python-multipart", repository: "Kludex/python-multipart" },
   { project: "safehtml", repository: "google/safehtml" },
-  { project: "liquidjs", repository: "harttle/liquidjs" },
+  { project: "liquidjs", repository: "harttle/liquidjs", count: 2 },
   { project: "Kong", repository: "Kong/kong" },
   { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
   { project: "kin-openapi", repository: "getkin/kin-openapi" },
@@ -116,9 +116,9 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
               })}</div>
               <section className="private-advisories" aria-labelledby="private-advisories-title">
                 <h3 id="private-advisories-title">Private reports in triage</h3>
-                <p>Reporter credit accepted on {privateReports.length} private security reports. All are awaiting maintainer review; none is published yet.</p>
-                <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>Reporter credit accepted</span></li>)}</ul>
-                <p className="private-advisories-note">Status checked October 27, 2026. Technical details remain private.</p>
+                <p>Reporter credit accepted on {privateReports.reduce((total, report) => total + (report.count ?? 1), 0)} private security reports. All are awaiting maintainer review; none is published yet.</p>
+                <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>{report.count && report.count > 1 ? `${report.count} reporter credits accepted` : "Reporter credit accepted"}</span></li>)}</ul>
+                <p className="private-advisories-note">Updated October 28, 2026. Technical details remain private.</p>
                 <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
               </section>
               {recentReports.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
