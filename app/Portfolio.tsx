@@ -1,6 +1,7 @@
 import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
+import GrainBackground from "./GrainBackground";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
 
@@ -27,12 +28,12 @@ const findings: Finding[] = [
   { project: "Node.js", title: "NO_PROXY loopback matching", description: "Reported loopback hostname forms that do not match NO_PROXY as expected.", status: "Correctness report · Awaiting response", type: "Contribution", url: "https://github.com/nodejs/node/issues/66853", number: "#66853", issueKey: "nodejs/node#66853" },
 ];
 
-const privateReports: { project: string; repository: string; count?: number; closed?: number }[] = [
+const privateReports: { project: string; repository: string; count?: number }[] = [
   { project: "validator.js", repository: "validatorjs/validator.js" },
   { project: "node-tar", repository: "isaacs/node-tar" },
   { project: "python-multipart", repository: "Kludex/python-multipart" },
   { project: "safehtml", repository: "google/safehtml" },
-  { project: "liquidjs", repository: "harttle/liquidjs", count: 2, closed: 1 },
+  { project: "liquidjs", repository: "harttle/liquidjs", count: 2 },
   { project: "Kong", repository: "Kong/kong" },
   { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
   { project: "kin-openapi", repository: "getkin/kin-openapi" },
@@ -44,7 +45,7 @@ const privateReports: { project: string; repository: string; count?: number; clo
 ];
 
 const privateReportCount = privateReports.reduce((total, report) => total + (report.count ?? 1), 0);
-const closedPrivateReportCount = privateReports.reduce((total, report) => total + (report.closed ?? 0), 0);
+const closedPrivateReportCount = 2;
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
   albums: "Favorite albums",
@@ -117,9 +118,9 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
               })}</div>
               <section className="private-advisories" aria-labelledby="private-advisories-title">
                 <h3 id="private-advisories-title">Private report credits</h3>
-                <p>Reporter credit invitations accepted for {privateReportCount} private security reports. {privateReportCount - closedPrivateReportCount} remain in triage and {closedPrivateReportCount} is closed. None has been published.</p>
+                <p>Reporter credit invitations accepted for {privateReportCount} private security reports. {privateReportCount - closedPrivateReportCount} remain in triage and {closedPrivateReportCount} are closed. None has been published.</p>
                 <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>{report.count && report.count > 1 ? `${report.count} reporter credits accepted` : "Reporter credit accepted"}</span></li>)}</ul>
-                <p className="private-advisories-note">Updated October 28, 2026. Credit acceptance is separate from maintainer validation. Technical details remain private.</p>
+                <p className="private-advisories-note">Updated October 29, 2026. Credit acceptance is separate from maintainer validation. Technical details remain private.</p>
                 <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
               </section>
               {recentReports.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
@@ -145,7 +146,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
           })}</div>{displayedMedia.length > 0 && <details className="image-credits"><summary>Image sources</summary><ul>{displayedMedia.map(media => <li key={media.src}><a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">{media.title}</a><span> — {media.credit}{media.licenseUrl && <> · <a href={media.licenseUrl} target="_blank" rel="noopener noreferrer">{media.license}</a></>}</span></li>)}</ul></details>}</section>}
         </main>
 
-        <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://stackoverflow.com/users/33244143/gio-fiore" target="_blank" rel="noopener noreferrer">Stack Overflow</a><a href="https://github.com/Figo5/gfiore.com/edit/main/content/favorites.json" target="_blank" rel="noopener noreferrer">Edit favorites</a><a href="#top">Back to top</a></div></footer>
+        <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://stackoverflow.com/users/33244143/gio-fiore" target="_blank" rel="noopener noreferrer">Stack Overflow</a><a href="https://github.com/Figo5/gfiore.com/edit/main/content/favorites.json" target="_blank" rel="noopener noreferrer">Edit favorites</a><GrainBackground /><a href="#top">Back to top</a></div></footer>
       </div>
     </>
   );
