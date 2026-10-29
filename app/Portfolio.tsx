@@ -1,7 +1,6 @@
 import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
-import CursorFollower from "./CursorFollower";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
 
@@ -73,7 +72,6 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
 
   return (
     <>
-      <CursorFollower />
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="site-shell">
         <header className="site-header" id="top">
