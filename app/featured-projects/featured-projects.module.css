@@ -21,6 +21,20 @@
   line-height: 1.25;
 }
 
+.description {
+  color: var(--body);
+  font-size: var(--featured-text);
+  line-height: 1.6;
+  margin-top: 12px;
+  max-width: 56ch;
+}
+
+.stack {
+  color: var(--body);
+  font-size: var(--featured-caption);
+  margin-top: 12px;
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;

@@ -4,12 +4,12 @@
 - Portfolio section for hiring managers and developers, using the owner's selected **Compact stories** layout.
 - Preserve the existing site's dark palette, typography, navigation, and interactive grain background.
 - Dials: DESIGN_VARIANCE=4, MOTION_INTENSITY=1, VISUAL_DENSITY=5.
-- Signature: actual project evidence beside project names and functional links. The owner requested names only, with no introduction, taglines, descriptions, or technology labels. Civicfolio shows the built UI with fictional demo data; AgentOps shows a still from its recorded workflow; SQLSage shows an excerpt from its published offline demo output. Demo captions remain available to screen readers rather than appearing as visible copy.
+- Signature: actual project evidence beside project names, factual descriptions, technology labels, and functional links. Descriptions follow the same straightforward style as the other projects. The owner requested removal of the introduction and promotional taglines, while retaining useful project descriptions. Civicfolio shows the built UI with fictional demo data; AgentOps shows a still from its recorded workflow; SQLSage shows an excerpt from its published offline demo output. Demo captions remain available to screen readers rather than appearing as visible copy.
 - The three featured projects appear once above the six other projects and the public report outcomes.
 
 ## Typography
 - Existing system sans-serif is retained for continuity; SFMono-Regular/Consolas for the CLI excerpt.
-- New section tokens: 12px code, 14px links, 20px project names. Code line-height 1.6; project headings 1.25.
+- New section tokens: 12px code/technology labels, 14px descriptions/links, 20px project names. Description and code line-height 1.6; project headings 1.25.
 - Existing shared section headings retain the site's global type rules. New project headings use weight 500.
 
 ## Color

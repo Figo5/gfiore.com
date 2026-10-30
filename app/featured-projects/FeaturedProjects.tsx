@@ -2,6 +2,8 @@ import styles from "./featured-projects.module.css";
 
 type FeaturedProject = {
   name: string;
+  description: string;
+  stack: string;
   url: string;
   image?: { src: string; alt: string; width: number; height: number };
   caption: string;
@@ -11,6 +13,8 @@ type FeaturedProject = {
 const projects: FeaturedProject[] = [
   {
     name: "Civicfolio",
+    description: "A local-first stock research app with cited hypotheses, market context, and a research journal.",
+    stack: "TypeScript · Research tools",
     url: "https://github.com/Figo5/civicfolio",
     image: { src: "/projects/civicfolio.png", alt: "Civicfolio's market research interface with clearly labeled fictional example data", width: 1440, height: 600 },
     caption: "Built application with fictional demo data.",
@@ -18,6 +22,8 @@ const projects: FeaturedProject[] = [
   },
   {
     name: "AgentOps",
+    description: "A local viewer for coding-agent activity, handoffs, and verdicts.",
+    stack: "TypeScript · Developer tools",
     url: "https://github.com/Figo5/agentops",
     image: { src: "/projects/agentops.png", alt: "AgentOps recorded demo with six labeled actors, handoff edges, and a review verdict", width: 1440, height: 900 },
     caption: "Still from the recorded demo workflow.",
@@ -28,6 +34,8 @@ const projects: FeaturedProject[] = [
   },
   {
     name: "SQLSage",
+    description: "A PostgreSQL CLI for query analysis and rewrite suggestions.",
+    stack: "TypeScript · PostgreSQL",
     url: "https://github.com/Figo5/sqlsage",
     caption: "Excerpt from the bundled offline demo.",
     links: [
@@ -50,6 +58,8 @@ export default function FeaturedProjects() {
         <article className={styles.row} key={project.url}>
           <div>
             <h3><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a></h3>
+            <p className={styles.description}>{project.description}</p>
+            <p className={styles.stack}>{project.stack}</p>
             <div className={styles.links}>{project.links.map(link => (
               <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: ${link.label}`}>{link.label}</a>
             ))}</div>
