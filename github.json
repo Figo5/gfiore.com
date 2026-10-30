@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-10-29T22:48:36.000Z",
+      "pushedAt": "2026-10-30T05:54:49.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -107,11 +107,6 @@
     }
   },
   "issues": {
-    "oapi-codegen/nethttp-middleware#89": {
-      "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
-    },
     "follow-redirects/follow-redirects#294": {
       "state": "closed",
       "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
@@ -121,6 +116,11 @@
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
+    },
+    "oapi-codegen/nethttp-middleware#89": {
+      "state": "open",
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
     },
     "nodejs/node#66853": {
       "state": "open",
@@ -157,6 +157,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-30T05:54:47.124Z",
+  "fetchedAt": "2026-10-30T13:01:59.182Z",
   "stale": false
 }
