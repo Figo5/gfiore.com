@@ -32,7 +32,8 @@ Use `npm start` to serve the production build locally. No database migrations or
 | File | Contents |
 | --- | --- |
 | `app/Portfolio.tsx` | Experience, selected projects, curated reports and outcomes, and page components |
-| `app/featured-projects/` | Featured project carousel, curated project data, responsive layout, and design notes |
+| `app/featured-projects/` | Automatic featured project carousel, curated project data, responsive layout, and design notes |
+| `app/MotionProvider.tsx` | Shared pause state for project rotation, video, and the interactive background |
 | `content/favorites.json` | Favorite albums, movies, and golf courses |
 | `app/favorite-media.ts` | Artwork matching, image sources, and photo credits |
 | `public/favorites/` | Album covers, movie posters, and course photos |

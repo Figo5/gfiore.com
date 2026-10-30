@@ -2,6 +2,7 @@ import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
 import GrainBackground from "./GrainBackground";
+import { MotionProvider } from "./MotionProvider";
 import FeaturedProjects from "./featured-projects/FeaturedProjects";
 import { FEATURED_PROJECT_URLS } from "./featured-projects/projects";
 
@@ -51,7 +52,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
   const displayedMedia = FAVORITE_MEDIA.filter(media => profile[media.category].some(item => getFavoriteMedia(media.category, item.title)?.src === media.src));
 
   return (
-    <>
+    <MotionProvider>
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="site-shell">
         <header className="site-header" id="top">
@@ -115,6 +116,6 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
 
         <footer className="site-footer"><span>Gio Fiore · 2026</span><div><a href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/gfiore25/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://stackoverflow.com/users/33244143/gio-fiore" target="_blank" rel="noopener noreferrer">Stack Overflow</a><a href="https://github.com/Figo5/gfiore.com/edit/main/content/favorites.json" target="_blank" rel="noopener noreferrer">Edit favorites</a><GrainBackground /><a href="#top">Back to top</a></div></footer>
       </div>
-    </>
+    </MotionProvider>
   );
 }

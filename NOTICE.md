@@ -24,6 +24,8 @@ These images illustrate the site's personal favorites. Original rights remain wi
 
 | Local media or excerpt | Source |
 | --- | --- |
+| `public/projects/civicfolio-current.jpg` | Captured from the owner's running local Civicfolio application on October 30, 2026; historical market observations shown in the actual interface |
+| `public/projects/edgeterminal-current.jpg` | Captured from the owner's running local EdgeTerminal application on October 30, 2026, showing the Week 8 NFL research interface |
 | `public/projects/civicfolio.png` | [Civicfolio's published UI fixture](https://github.com/Figo5/civicfolio/blob/main/docs/media/research.png), showing fictional companies and values in the built application |
 | `public/projects/agentops.png` | Still at 18 seconds from the [AgentOps recorded demo](https://github.com/Figo5/agentops/blob/main/docs/demo.mp4), showing example activity |
 | SQLSage CLI excerpt | [Published offline demo output](https://github.com/Figo5/sqlsage/blob/main/docs/demo-output.txt); excerpt only, without a performance claim |

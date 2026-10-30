@@ -20,8 +20,8 @@ export const featuredProjects: FeaturedProject[] = [
     description: "A local-first stock research app with cited hypotheses, market context, and a research journal.",
     stack: "TypeScript · Research tools",
     url: "https://github.com/Figo5/civicfolio",
-    media: { type: "image", src: "/projects/civicfolio.png", alt: "Civicfolio's market research interface with clearly labeled fictional example data", width: 1440, height: 600 },
-    caption: "Built application with fictional demo data.",
+    media: { type: "image", src: "/projects/civicfolio-current.jpg", alt: "Civicfolio market screening and research interface, captured October 30, 2026", width: 1120, height: 800 },
+    caption: "Local application capture, October 30, 2026. Displayed market observations are historical.",
     links: [{ label: "GitHub", url: "https://github.com/Figo5/civicfolio" }],
   },
   {
@@ -51,8 +51,8 @@ export const featuredProjects: FeaturedProject[] = [
     stack: "Python · Research tools",
     url: "https://github.com/Figo5/edgeterminal",
     stage: "Beta",
-    media: { type: "image", src: "/projects/edgeterminal.png", alt: "EdgeTerminal's published NFL research board with game projections and research-only labels", width: 1440, height: 900 },
-    caption: "Published UI capture, not current prices or a validated prediction record.",
+    media: { type: "image", src: "/projects/edgeterminal-current.jpg", alt: "EdgeTerminal Week 8 NFL projections interface, captured October 30, 2026", width: 1120, height: 800 },
+    caption: "Local application capture, October 30, 2026. Research estimates, not a validated prediction record.",
     links: [{ label: "GitHub", url: "https://github.com/Figo5/edgeterminal" }],
   },
   {
