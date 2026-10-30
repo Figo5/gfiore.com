@@ -1,9 +1,23 @@
 {
   "repositories": {
+    "ousel": {
+      "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-30T20:26:54.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/ousel"
+    },
+    "upgrade-check-skill": {
+      "description": "A coding-agent skill that tests whether an update still works for existing saved data",
+      "language": "JavaScript",
+      "pushedAt": "2026-10-30T20:15:10.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/upgrade-check-skill"
+    },
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-10-30T05:54:49.000Z",
+      "pushedAt": "2026-10-30T15:43:03.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -48,13 +62,6 @@
       "pushedAt": "2026-10-17T20:25:52.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/edgeterminal"
-    },
-    "agentops": {
-      "description": "A local viewer for coding agent activity, handoffs, and verdicts.",
-      "language": "TypeScript",
-      "pushedAt": "2026-10-17T20:25:46.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/agentops"
     },
     "sqlsage": {
       "description": "PostgreSQL query analysis and rewrite suggestions.",
@@ -107,20 +114,20 @@
     }
   },
   "issues": {
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
+    "oapi-codegen/nethttp-middleware#89": {
+      "state": "open",
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
     },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
     },
-    "oapi-codegen/nethttp-middleware#89": {
-      "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     },
     "nodejs/node#66853": {
       "state": "open",
@@ -157,6 +164,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-30T13:01:59.182Z",
+  "fetchedAt": "2026-10-30T22:25:05.027Z",
   "stale": false
 }
