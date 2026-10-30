@@ -19,3 +19,13 @@ These images illustrate the site's personal favorites. Original rights remain wi
 | `public/favorites/courses/tobacco-road.jpg` | [Tobacco Road Golf Club](https://tobaccoroadgolf.com/) |
 | `public/favorites/courses/torrey-pines.jpg` | [City of San Diego](https://www.sandiego.gov/torrey-pines) |
 | `public/favorites/courses/st-andrews-old-course.jpg` | [Eddy23 / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Swilcan_Bridge_at_St._Andrews.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); cropped for display |
+
+## Featured project media
+
+| Local image or excerpt | Source |
+| --- | --- |
+| `public/projects/civicfolio.png` | [Civicfolio's published UI fixture](https://github.com/Figo5/civicfolio/blob/main/docs/media/research.png), showing fictional companies and values in the built application |
+| `public/projects/agentops.png` | Still at 18 seconds from the [AgentOps recorded demo](https://github.com/Figo5/agentops/blob/main/docs/demo.mp4), showing example activity |
+| SQLSage CLI excerpt | [Published offline demo output](https://github.com/Figo5/sqlsage/blob/main/docs/demo-output.txt); excerpt only, without a performance claim |
+
+These projects and their original media are by Gio Fiore. The demo captions identify recorded or fictional example data rather than current live activity.

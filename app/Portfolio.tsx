@@ -2,6 +2,7 @@ import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
 import GrainBackground from "./GrainBackground";
+import FeaturedProjects, { FEATURED_PROJECT_URLS } from "./featured-projects/FeaturedProjects";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
 
@@ -68,10 +69,12 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
             <p className="education-line">Kent State University · B.S. Emerging Media & Technology, 2026 · Entrepreneurship minor</p>
           </section>
 
+          <FeaturedProjects />
+
           <div className="main-columns">
             <section className="projects-column" aria-labelledby="projects-title">
-              <div className="column-heading"><h2 id="projects-title">Projects</h2><a className="subtle-link" href="https://github.com/Figo5?tab=repositories" target="_blank" rel="noopener noreferrer">All repos</a></div>
-              <div className="project-list">{projects.map(project => {
+              <div className="column-heading"><h2 id="projects-title">More projects</h2><a className="subtle-link" href="https://github.com/Figo5?tab=repositories" target="_blank" rel="noopener noreferrer">All repos</a></div>
+              <div className="project-list">{projects.filter(project => !FEATURED_PROJECT_URLS.has(project.url)).map(project => {
                 const repository = github.repositories[repositoryName(project.url)];
                 const stage = repository?.archived ? "Archived" : project.stage;
                 const pushed = shortDate(repository?.pushedAt ?? null);

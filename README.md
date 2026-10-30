@@ -32,9 +32,11 @@ Use `npm start` to serve the production build locally. No database migrations or
 | File | Contents |
 | --- | --- |
 | `app/Portfolio.tsx` | Experience, selected projects, curated reports and outcomes, and page components |
+| `app/featured-projects/` | Featured project stories, responsive layout, and design notes |
 | `content/favorites.json` | Favorite albums, movies, and golf courses |
 | `app/favorite-media.ts` | Artwork matching, image sources, and photo credits |
 | `public/favorites/` | Album covers, movie posters, and course photos |
+| `public/projects/` | Featured project screenshots from the public project demos |
 | `app/globals.css` | Layout and dark theme |
 | `app/github-data.ts` | Hosted public GitHub feed reader and committed fallback |
 | `app/github-data-core.ts` | Public GitHub source validation and feed generation logic |
