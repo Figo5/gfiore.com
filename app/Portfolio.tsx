@@ -2,7 +2,8 @@ import type { ProfileContent } from "./profile-types";
 import type { GitHubSnapshot } from "./github-types";
 import { FAVORITE_MEDIA, getFavoriteMedia } from "./favorite-media";
 import GrainBackground from "./GrainBackground";
-import FeaturedProjects, { FEATURED_PROJECT_URLS } from "./featured-projects/FeaturedProjects";
+import FeaturedProjects from "./featured-projects/FeaturedProjects";
+import { FEATURED_PROJECT_URLS } from "./featured-projects/projects";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
 

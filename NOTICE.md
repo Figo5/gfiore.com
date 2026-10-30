@@ -22,10 +22,14 @@ These images illustrate the site's personal favorites. Original rights remain wi
 
 ## Featured project media
 
-| Local image or excerpt | Source |
+| Local media or excerpt | Source |
 | --- | --- |
 | `public/projects/civicfolio.png` | [Civicfolio's published UI fixture](https://github.com/Figo5/civicfolio/blob/main/docs/media/research.png), showing fictional companies and values in the built application |
 | `public/projects/agentops.png` | Still at 18 seconds from the [AgentOps recorded demo](https://github.com/Figo5/agentops/blob/main/docs/demo.mp4), showing example activity |
 | SQLSage CLI excerpt | [Published offline demo output](https://github.com/Figo5/sqlsage/blob/main/docs/demo-output.txt); excerpt only, without a performance claim |
+| `public/projects/agentops-demo.mp4` | Original [AgentOps recorded demo](https://github.com/Figo5/agentops/blob/main/docs/demo.mp4), played only on request |
+| `public/projects/edgeterminal.png` | [EdgeTerminal published desktop board](https://github.com/Figo5/edgeterminal/blob/main/reports/nfl_model_v1/screenshots/weekly_board_desktop.png), a dated research UI capture |
+| DiffGuard CLI excerpt | [Published fixture output](https://github.com/Figo5/diffguard/blob/main/docs/example-output.txt); prewritten finding through the real CLI, without a model-accuracy claim |
+| `public/projects/lab-in-a-box.png` | [Published labctl help capture](https://github.com/Figo5/lab-in-a-box/blob/main/docs/media/cli.png) |
 
 These projects and their original media are by Gio Fiore. The demo captions identify recorded or fictional example data rather than current live activity.

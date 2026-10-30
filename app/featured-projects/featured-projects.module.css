@@ -5,101 +5,63 @@
   margin-top: 40px;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  align-items: start;
-  gap: 32px;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--line);
-  overflow-wrap: anywhere;
-}
-
-.row h3 {
-  font-size: var(--featured-heading);
-  font-weight: 500;
-  line-height: 1.25;
-}
-
-.description {
-  color: var(--body);
-  font-size: var(--featured-text);
-  line-height: 1.6;
-  margin-top: 12px;
-  max-width: 56ch;
-}
-
-.stack {
-  color: var(--body);
-  font-size: var(--featured-caption);
-  margin-top: 12px;
-}
-
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 16px;
-  font-size: var(--featured-text);
-}
-
-.links a {
-  color: var(--accent);
-}
-
-.links a:hover {
+.controls, .navigation, .links { display: flex; align-items: center; gap: 16px; }
+.controls { justify-content: space-between; flex-wrap: wrap; margin: 16px 0; }
+.navigation { gap: 12px; }
+.picker, .navigation button {
   color: var(--text);
-}
-
-.visual {
-  min-width: 0;
-  margin: 4px 0 0;
-}
-
-.visual img {
-  display: block;
-  width: 100%;
-  height: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 4px;
+  font-size: var(--featured-text);
+  min-height: 44px;
+  padding: 8px 12px;
 }
-
-.output {
-  min-height: 184px;
-  margin: 0;
-  padding: 20px;
+.picker { max-width: 100%; }
+.navigation button:hover:not(:disabled) { border-color: var(--accent); }
+.navigation button:disabled { cursor: default; opacity: .4; }
+.counter { color: var(--body); font-size: var(--featured-caption); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.picker:focus-visible, .viewport:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+.viewport { overflow: hidden; touch-action: pan-y pinch-zoom; }
+.track { display: flex; align-items: stretch; }
+.slide { flex: 0 0 100%; min-width: 0; padding: 0 0 24px; border-bottom: 1px solid var(--line); }
+.visual { min-width: 0; margin: 0; }
+.media {
+  height: clamp(280px, 48vw, 620px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
   background: var(--surface);
-  color: var(--text);
+  overflow: hidden;
+}
+.media img, .media video { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.media video { width: 100%; height: 100%; }
+.output {
+  width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 32px;
+  overflow: auto;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  font: var(--featured-caption)/1.6 SFMono-Regular, Consolas, monospace;
+  color: var(--text);
+  font: 16px/1.75 SFMono-Regular, Consolas, monospace;
 }
-
-.command {
-  color: var(--accent);
-}
-
+.command { color: var(--accent); }
+.details { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 24px; padding-top: 20px; }
+.details h3 { font-size: var(--featured-heading); font-weight: 500; line-height: 1.25; }
+.description { color: var(--body); font-size: var(--featured-text); line-height: 1.6; margin-top: 8px; max-width: 72ch; }
+.stack { color: var(--body); font-size: var(--featured-caption); margin-top: 12px; }
+.links { flex-wrap: wrap; justify-content: flex-end; gap: 20px; font-size: var(--featured-text); }
+.links a { color: var(--accent); min-height: 44px; display: inline-flex; align-items: center; }
+.links a:hover { color: var(--text); }
 @media (max-width: 600px) {
-  .row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
-    padding: 24px 0;
-  }
-
-  .visual {
-    order: -1;
-    margin-top: 0;
-  }
-
-  .links {
-    margin-top: 8px;
-  }
-}
-
-@media (pointer: coarse) {
-  .links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
+  .controls { gap: 12px; }
+  .picker { flex: 1; min-width: 0; font-size: 16px; }
+  .navigation { gap: 8px; }
+  .navigation button { padding: 8px; }
+  .details { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .links { justify-content: flex-start; }
+  .output { padding: 24px; font-size: 14px; }
 }
