@@ -1,15 +1,8 @@
 .section {
   --featured-text: 14px;
   --featured-caption: 12px;
-  --featured-tagline: 16px;
   --featured-heading: 20px;
   margin-top: 40px;
-}
-
-.intro {
-  color: var(--body);
-  font-size: var(--featured-text);
-  margin-top: 16px;
 }
 
 .row {
@@ -26,26 +19,6 @@
   font-size: var(--featured-heading);
   font-weight: 500;
   line-height: 1.25;
-}
-
-.tagline {
-  font-size: var(--featured-tagline);
-  line-height: 1.5;
-  margin-top: 8px;
-}
-
-.description {
-  color: var(--body);
-  font-size: var(--featured-text);
-  line-height: 1.6;
-  margin-top: 12px;
-  max-width: 56ch;
-}
-
-.stack {
-  color: var(--body);
-  font-size: var(--featured-caption);
-  margin-top: 12px;
 }
 
 .links {
@@ -74,13 +47,6 @@
   width: 100%;
   height: auto;
   border-radius: 4px;
-}
-
-.visual figcaption {
-  color: var(--body);
-  font-size: var(--featured-caption);
-  line-height: 1.6;
-  margin-top: 8px;
 }
 
 .output {
