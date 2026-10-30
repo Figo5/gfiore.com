@@ -2,7 +2,7 @@
 
 Source for my personal website: **[gfiore.com](https://gfiore.com)**.
 
-A minimal dark site with my experience, selected projects, public findings and contributions, and favorite albums, movies, and golf courses.
+A minimal dark site with my experience, selected projects, public reports with documented outcomes, and favorite albums, movies, and golf courses.
 
 Built with React, TypeScript, and Next.js. The deployment configuration targets Netlify, with continuous deployment from this repository's `main` branch. Personal content lives in GitHub; the app needs no runtime database, owner sign-in, or write credentials.
 
@@ -31,7 +31,7 @@ Use `npm start` to serve the production build locally. No database migrations or
 
 | File | Contents |
 | --- | --- |
-| `app/Portfolio.tsx` | Experience, selected projects, featured findings, and page components |
+| `app/Portfolio.tsx` | Experience, selected projects, curated reports and outcomes, and page components |
 | `content/favorites.json` | Favorite albums, movies, and golf courses |
 | `app/favorite-media.ts` | Artwork matching, image sources, and photo credits |
 | `public/favorites/` | Album covers, movie posters, and course photos |

@@ -6,7 +6,7 @@ import GrainBackground from "./GrainBackground";
 type FavoriteCategory = "albums" | "movies" | "courses";
 
 type Project = { name: string; description: string; stack: string; url: string; stage?: string; notes?: string[] };
-type Finding = { project: string; title: string; description: string; status: string; type: string; url: string; number: string; issueKey?: string };
+type Finding = { project: string; title: string; description: string; outcome: string; url: string; number: string; reference?: { label: string; url: string } };
 
 const projects: Project[] = [
   { name: "FairwayOS", description: "A golf-video analysis prototype for tracking the ball, clubhead, golfer, and cup.", stack: "Python · Computer vision", url: "https://github.com/Figo5/fairwayos", stage: "Prototype", notes: ["Development is paused at a research checkpoint."] },
@@ -21,31 +21,9 @@ const projects: Project[] = [
 ];
 
 const findings: Finding[] = [
-  { project: "qs", title: "Object-input prototype assignment", description: "Reported an object-input parsing regression. The merged upstream fix references my report.", status: "Report addressed · Fix merged", type: "Contribution", url: "https://github.com/ljharb/qs/issues/633", number: "#633" },
-  { project: "follow-redirects", title: "Affected-version correction", description: "Compared redirect-header behavior across releases and reported an affected-range gap.", status: "Maintainer acknowledged · Completed", type: "Acknowledgment", url: "https://github.com/follow-redirects/follow-redirects/issues/294#issuecomment-6344092099", number: "#294", issueKey: "follow-redirects/follow-redirects#294" },
-  { project: "oapi-codegen", title: "Middleware routing analysis", description: "Contributed an analysis of how middleware and request routing interpret encoded paths.", status: "Public contribution · Awaiting response", type: "Contribution", url: "https://github.com/oapi-codegen/nethttp-middleware/issues/89#issuecomment-6383483915", number: "#89", issueKey: "oapi-codegen/nethttp-middleware#89" },
-  { project: "tar-fs", title: "Archive extraction version matrix", description: "Documented a destination-symlink regression and the versions affected.", status: "Public report · Awaiting response", type: "Finding", url: "https://github.com/mafintosh/tar-fs/issues/122", number: "#122", issueKey: "mafintosh/tar-fs#122" },
-  { project: "Node.js", title: "NO_PROXY loopback matching", description: "Reported loopback hostname forms that do not match NO_PROXY as expected.", status: "Correctness report · Awaiting response", type: "Contribution", url: "https://github.com/nodejs/node/issues/66853", number: "#66853", issueKey: "nodejs/node#66853" },
+  { project: "qs", title: "Object-input prototype assignment", description: "Found and reproduced a parsing regression that assigned an attacker-controlled prototype. The upstream fix references my report and copies the key as data.", outcome: "Fix merged · Oct 27, 2026", url: "https://github.com/ljharb/qs/issues/633", number: "#633", reference: { label: "Merged fix", url: "https://github.com/ljharb/qs/pull/636" } },
+  { project: "follow-redirects", title: "Advisory affected-version gap", description: "Reproduced a redirect-header bypass on an earlier release and reported that the advisory's affected range omitted it. The maintainer acknowledged the report.", outcome: "Maintainer acknowledged · Oct 22, 2026", url: "https://github.com/follow-redirects/follow-redirects/issues/294", number: "#294", reference: { label: "Maintainer response", url: "https://github.com/follow-redirects/follow-redirects/issues/294#issuecomment-6344092099" } },
 ];
-
-const privateReports: { project: string; repository: string; count?: number }[] = [
-  { project: "validator.js", repository: "validatorjs/validator.js" },
-  { project: "node-tar", repository: "isaacs/node-tar" },
-  { project: "python-multipart", repository: "Kludex/python-multipart" },
-  { project: "safehtml", repository: "google/safehtml" },
-  { project: "liquidjs", repository: "harttle/liquidjs", count: 2 },
-  { project: "Kong", repository: "Kong/kong" },
-  { project: "unzipper", repository: "ZJONSSON/node-unzipper" },
-  { project: "kin-openapi", repository: "getkin/kin-openapi" },
-  { project: "happy-dom", repository: "capricorn86/happy-dom" },
-  { project: "SvelteKit", repository: "sveltejs/kit" },
-  { project: "SVGO", repository: "svg/svgo" },
-  { project: "SiYuan", repository: "siyuan-note/siyuan" },
-  { project: "simple-git", repository: "steveukx/git-js" },
-];
-
-const privateReportCount = privateReports.reduce((total, report) => total + (report.count ?? 1), 0);
-const closedPrivateReportCount = 2;
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
   albums: "Favorite albums",
@@ -69,7 +47,6 @@ function repositoryName(url: string) {
 export default function Portfolio({ initialProfile: profile, github }: { initialProfile: ProfileContent; github: GitHubSnapshot }) {
   const hasFavorites = profile.albums.length + profile.movies.length + profile.courses.length > 0;
   const displayedMedia = FAVORITE_MEDIA.filter(media => profile[media.category].some(item => getFavoriteMedia(media.category, item.title)?.src === media.src));
-  const recentReports = github.contributions.filter(contribution => !findings.some(finding => finding.url.split("#")[0] === contribution.url));
 
   return (
     <>
@@ -106,28 +83,14 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
                   {project.notes && <details className="project-details"><summary>Details</summary><div>{project.notes.map(note => <p key={note}>{note}</p>)}</div></details>}
                 </article>;
               })}</div>
+              <p className="dated-note">{github.fetchedAt ? `${github.stale ? "Last synced" : "GitHub updated"} ${shortDate(github.fetchedAt)}.` : "Project details from public GitHub repositories."}</p>
             </section>
 
             <aside className="findings-column" aria-labelledby="findings-title">
-              <div className="column-heading"><h2 id="findings-title">Findings & contributions</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <p className="column-intro">Public contributions and private security reports.</p>
-              <div className="findings-list">{findings.map(finding => {
-                const issue = finding.issueKey ? github.issues[finding.issueKey.toLowerCase()] : undefined;
-                const status = issue ? `${finding.status.split(" · ")[0]} · ${issue.state === "closed" ? "Closed" : "Open"}` : finding.status;
-                return <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><span>{finding.type}</span></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{status}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} issue ${finding.number}`}>{finding.number}</a></div></article>;
-              })}</div>
-              <section className="private-advisories" aria-labelledby="private-advisories-title">
-                <h3 id="private-advisories-title">Private report credits</h3>
-                <p>Reporter credit invitations accepted for {privateReportCount} private security reports. {privateReportCount - closedPrivateReportCount} remain in triage and {closedPrivateReportCount} are closed. None has been published.</p>
-                <ul>{privateReports.map(report => <li key={report.repository}><a href={`https://github.com/${report.repository}`} target="_blank" rel="noopener noreferrer">{report.project}</a><span>{report.count && report.count > 1 ? `${report.count} reporter credits accepted` : "Reporter credit accepted"}</span></li>)}</ul>
-                <p className="private-advisories-note">Updated October 29, 2026. Credit acceptance is separate from maintainer validation. Technical details remain private.</p>
-                <a className="subtle-link" href="https://github.com/advisories?query=credit%3AFigo5+sort%3Acreated-desc" target="_blank" rel="noopener noreferrer">Published credits on GitHub</a>
-              </section>
-              {recentReports.length > 0 && <section className="recent-reports" aria-labelledby="recent-reports-title">
-                <h3 id="recent-reports-title">Recent public reports</h3>
-                <ul>{recentReports.map(contribution => <li key={contribution.url}><div><span>{contribution.repository}</span><span>{contribution.action}</span></div><a href={contribution.url} target="_blank" rel="noopener noreferrer">{contribution.title}</a>{shortDate(contribution.occurredAt) && <time dateTime={contribution.occurredAt}>{shortDate(contribution.occurredAt)}</time>}</li>)}</ul>
-              </section>}
-              <p className="dated-note">{github.fetchedAt ? `${github.stale ? "Last synced" : "GitHub updated"} ${shortDate(github.fetchedAt)}.` : "Featured reports reviewed October 24, 2026."}</p>
+              <div className="column-heading"><h2 id="findings-title">Reports & outcomes</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+              <p className="column-intro">Selected public reports with a documented outcome.</p>
+              <div className="findings-list">{findings.map(finding => <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} report ${finding.number}`}>{finding.number}</a></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{finding.outcome}</span>{finding.reference && <a href={finding.reference.url} target="_blank" rel="noopener noreferrer">{finding.reference.label}</a>}</div></article>)}</div>
+              <p className="dated-note">Reports reviewed October 30, 2026.</p>
             </aside>
           </div>
 

@@ -32,7 +32,7 @@ Configure `gfiore.com` and `www.gfiore.com` on the Netlify project using the DNS
 After publishing, check both custom domains:
 
 - `/deployment.json` reports the intended `main` commit.
-- The homepage loads the expected experience, projects, findings, favorites, and images.
+- The homepage loads the expected experience, projects, reports and outcomes, favorites, and images.
 - `/api/github` returns a valid public snapshot.
 - `/api/profile` returns the committed favorites with `canEdit: false`; `PUT /api/profile` returns `405`.
 
@@ -40,9 +40,9 @@ When investigating a failed build, use the Netlify deploy log for the failing co
 
 ## Personal content
 
-Experience, selected projects, and featured findings are curated in `app/Portfolio.tsx`. Favorites are stored in `content/favorites.json`; the initial file preserves the existing published favorites. The footer's **Edit favorites** link opens this file in GitHub. Keep each favorite's `title`, `note`, and `url` fields; use an empty string for optional notes or links.
+Experience, selected projects, and featured reports are curated in `app/Portfolio.tsx`. Favorites are stored in `content/favorites.json`; the initial file preserves the existing published favorites. The footer's **Edit favorites** link opens this file in GitHub. Keep each favorite's `title`, `note`, and `url` fields; use an empty string for optional notes or links.
 
-The **Private reports in triage** section is an owner-approved, dated snapshot of project names and accepted reporter credits. It links to the public project repositories and omits private advisory identifiers, report titles, and technical details. Update this curated section when a report is published or its status changes; accepting credit alone does not publish an advisory or confirm its findings.
+The **Reports & outcomes** section is a curated selection of public work with a documented result. Each entry explains the report and links to the upstream fix or maintainer response. Distinguish a merged fix from an acknowledgment; a closed issue alone does not establish remediation. Verify the public evidence and update the review date when changing these entries. Private reports, pending credit invitations, and unresolved report feeds are not displayed. A private report becoming closed does not authorize publishing it here; wait for a public advisory or other authorized disclosure.
 
 Album covers, movie posters, and course photos are matched by title in `app/favorite-media.ts`, with local files under `public/favorites/`. Add media and its attribution there when adding favorites that need new images. A title without matching artwork displays a simple initial tile.
 
@@ -54,9 +54,9 @@ The **Refresh public GitHub data** Actions workflow updates a public snapshot ev
 
 The website reads this fixed public feed through Next.js's persistent fetch cache, with a five-minute revalidation interval. Requests can refresh the cached feed without a new deployment. The feed's own timestamp determines freshness: data older than six hours is marked stale. If the feed request or validation fails, the site serves the validated snapshot in `content/github-fallback.json` and marks it stale. Refresh that committed fallback when a newer baseline is wanted.
 
-The nine selected projects keep their order and curated stage notes. Repository descriptions, primary languages, last-push dates, and archived status come from GitHub. Featured issue states and the latest SQLSage release refresh too. Up to three other public reports or pull requests authored by Figo5 appear as compact links.
+The nine selected projects keep their order and curated stage notes. Repository descriptions, primary languages, last-push dates, and archived status come from GitHub. The feed also retains public issue states, recent contributions, and the latest SQLSage release for API consumers; those fields do not automatically add reports to the homepage.
 
-Acknowledgment wording, featured write-ups, experience, favorites, and the dated private-report list stay curated. An issue closing does not automatically become a confirmed security finding or a maintainer credit. The automatic feed publishes only public GitHub data. The Actions job uses its temporary repository-scoped token to refresh public API data and update the data branch; that token stays in the job. The website uses no GitHub credentials, and private report bodies are not sent to visitors.
+Report selection, outcome wording, experience, and favorites stay curated. The report review date is separate from the project feed's sync date. An issue closing does not automatically become a confirmed security finding or a maintainer credit. The automatic feed publishes only public GitHub data. The Actions job uses its temporary repository-scoped token to refresh public API data and update the data branch; that token stays in the job. The website uses no GitHub credentials, and private report bodies are not sent to visitors.
 
 ## Historical Sites tooling
 

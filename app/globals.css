@@ -11,8 +11,6 @@
 @media(max-width:950px){.favorite-gallery{gap:10px}.favorite-gallery .favorite-name{font-size:10px}.favorite-note{font-size:9px}}
 @media(max-width:720px){.favorite-gallery{gap:14px;margin-top:18px}.favorite-gallery .favorite-name{font-size:12px}.favorite-note{font-size:10px}.favorites-grid{gap:34px}.image-credits{margin-top:25px}}
 @media(max-width:380px){.favorite-gallery{gap:10px}.favorite-gallery .favorite-name{font-size:11px}.favorite-note{font-size:9px}}
-.project-updated{color:var(--muted)}.recent-reports{margin-top:30px}.recent-reports h3{font-size:13px;color:#b9c6cd}.recent-reports ul{list-style:none;padding:0;margin:13px 0 0}.recent-reports li{padding:14px 0;border-bottom:1px solid var(--line)}.recent-reports li>div{display:flex;justify-content:space-between;gap:14px;font-size:9px;color:var(--muted);margin-bottom:6px}.recent-reports li>a{font-size:12px;line-height:1.8;overflow-wrap:anywhere;text-decoration:none}.recent-reports li>a:hover{text-decoration:underline}.recent-reports time{display:block;font-size:9px;color:var(--muted);margin-top:6px}@media(max-width:720px){.recent-reports li>a{font-size:13px}.recent-reports li>div,.recent-reports time{font-size:10px}}
-.private-advisories{margin-top:30px}.private-advisories h3{font-size:13px;color:#b9c6cd}.private-advisories>p{font-size:12px;line-height:1.8;color:var(--body);margin-top:8px}.private-advisories ul{list-style:none;padding:0;margin:12px 0 0}.private-advisories li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}.private-advisories li>a{text-decoration:none}.private-advisories li>a:hover{text-decoration:underline}.private-advisories li>span{font-size:9px;color:var(--muted)}.private-advisories>p.private-advisories-note{font-size:10px;color:var(--muted);margin-top:14px}.private-advisories>.subtle-link{display:inline-block;margin-top:8px}@media(max-width:720px){.private-advisories li>span{font-size:10px}}
 
 body{position:relative;isolation:isolate}
 .grain-background{position:fixed;inset:0;height:100svh;z-index:-1;pointer-events:none;overflow:hidden;contain:paint;background:var(--background)}
@@ -22,3 +20,4 @@ body{position:relative;isolation:isolate}
 .site-footer .background-toggle:hover{text-decoration:underline}
 @media(max-width:720px){.grain-background canvas{opacity:.22}.grain-background::after{background:#11141644}}
 @media(prefers-reduced-motion:reduce){.background-toggle{display:none}}
+.project-updated{color:var(--muted)}
