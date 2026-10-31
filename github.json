@@ -1,5 +1,12 @@
 {
   "repositories": {
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-10-30T22:25:06.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
+    },
     "ousel": {
       "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
       "language": "TypeScript",
@@ -13,13 +20,6 @@
       "pushedAt": "2026-10-30T20:15:10.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/upgrade-check-skill"
-    },
-    "gfiore.com": {
-      "description": "My personal website: experience, projects, findings, and favorites.",
-      "language": "TypeScript",
-      "pushedAt": "2026-10-30T15:43:03.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gfiore.com"
     },
     "kubernetes": {
       "description": "Production-Grade Container Scheduling and Management",
@@ -124,15 +124,15 @@
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
     },
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     }
   },
   "contributions": [
@@ -164,6 +164,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-30T22:25:05.027Z",
+  "fetchedAt": "2026-10-31T05:50:24.364Z",
   "stale": false
 }
