@@ -49,12 +49,19 @@
       "archived": false,
       "url": "https://github.com/Figo5/edgeterminal"
     },
-    "agentops": {
-      "description": "A local viewer for coding agent activity, handoffs, and verdicts.",
+    "ousel": {
+      "description": "A local workspace for understanding what a coding-agent team is doing and what needs review.",
       "language": "TypeScript",
-      "pushedAt": "2026-10-17T20:25:46.000Z",
+      "pushedAt": "2026-11-01T00:00:00.000Z",
       "archived": false,
-      "url": "https://github.com/Figo5/agentops"
+      "url": "https://github.com/Figo5/ousel"
+    },
+    "upgrade-check-skill": {
+      "description": "A coding-agent skill that checks whether an update keeps existing saved data.",
+      "language": "JavaScript",
+      "pushedAt": "2026-11-01T00:00:00.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/upgrade-check-skill"
     },
     "sqlsage": {
       "description": "PostgreSQL query analysis and rewrite suggestions.",

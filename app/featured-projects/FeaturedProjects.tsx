@@ -103,7 +103,7 @@ export default function FeaturedProjects() {
                     <img src={project.media.src} alt={project.media.alt} width={project.media.width} height={project.media.height} loading={index === 0 ? "eager" : "lazy"} decoding="async" draggable={false} />
                   ) : project.media.type === "video" ? (
                     <video src={index === selected ? project.media.src : undefined} poster={project.media.poster} width={project.media.width} height={project.media.height} aria-label={project.media.label} autoPlay={index === selected && running} muted loop playsInline preload="none">
-                      <a href={project.media.src}>Open the AgentOps demo</a>
+                      <a href={project.media.src}>Open the project demo</a>
                     </video>
                   ) : (
                     <pre className={styles.output} tabIndex={0} role="region" aria-label={`${project.name} CLI example`}><code><span className={styles.command}>{project.media.command}</span>{"\n\n"}{project.media.output}</code></pre>

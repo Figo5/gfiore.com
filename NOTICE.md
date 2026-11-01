@@ -27,9 +27,9 @@ These images illustrate the site's personal favorites. Original rights remain wi
 | `public/projects/civicfolio-current.jpg` | Captured from the owner's running local Civicfolio application on October 30, 2026; historical market observations shown in the actual interface |
 | `public/projects/edgeterminal-current.jpg` | Captured from the owner's running local EdgeTerminal application on October 30, 2026, showing the Week 8 NFL research interface |
 | `public/projects/civicfolio.png` | [Civicfolio's published UI fixture](https://github.com/Figo5/civicfolio/blob/main/docs/media/research.png), showing fictional companies and values in the built application |
-| `public/projects/agentops.png` | Still at 18 seconds from the [AgentOps recorded demo](https://github.com/Figo5/agentops/blob/main/docs/demo.mp4), showing example activity |
+| `public/projects/ousel.png` | Poster frame from the owner's recorded Ousel walkthrough on November 1, 2026, showing a real review task |
 | SQLSage CLI excerpt | [Published offline demo output](https://github.com/Figo5/sqlsage/blob/main/docs/demo-output.txt); excerpt only, without a performance claim |
-| `public/projects/agentops-demo.mp4` | Original [AgentOps recorded demo](https://github.com/Figo5/agentops/blob/main/docs/demo.mp4), played only on request |
+| `public/projects/ousel-demo.mp4` | Recorded Ousel walkthrough from the owner's local task on November 1, 2026; captured and reported evidence are labeled in the UI |
 | `public/projects/edgeterminal.png` | [EdgeTerminal published desktop board](https://github.com/Figo5/edgeterminal/blob/main/reports/nfl_model_v1/screenshots/weekly_board_desktop.png), a dated research UI capture |
 | DiffGuard CLI excerpt | [Published fixture output](https://github.com/Figo5/diffguard/blob/main/docs/example-output.txt); prewritten finding through the real CLI, without a model-accuracy claim |
 | `public/projects/lab-in-a-box.png` | [Published labctl help capture](https://github.com/Figo5/lab-in-a-box/blob/main/docs/media/cli.png) |
