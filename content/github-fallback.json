@@ -52,14 +52,14 @@
     "ousel": {
       "description": "A local workspace for understanding what a coding-agent team is doing and what needs review.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-01T00:00:00.000Z",
+      "pushedAt": "2026-11-01T21:29:35.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/ousel"
     },
     "upgrade-check-skill": {
       "description": "A coding-agent skill that checks whether an update keeps existing saved data.",
       "language": "JavaScript",
-      "pushedAt": "2026-11-01T00:00:00.000Z",
+      "pushedAt": "2026-11-01T21:27:15.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/upgrade-check-skill"
     },
@@ -164,6 +164,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-10-30T13:01:59.182Z",
+  "fetchedAt": "2026-11-01T21:35:08.391Z",
   "stale": false
 }
