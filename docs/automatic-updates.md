@@ -27,7 +27,7 @@ npm run build:cloudflare
 npm run preview:cloudflare
 ```
 
-The preview uses the actual Workers runtime. `npm run deploy:cloudflare` publishes the generated build after Wrangler authentication. Do not deploy the historical `vite.config.ts`, which belongs to the old Sites workflow.
+The preview uses the actual Workers runtime. `npm run deploy:cloudflare` uploads a version and activates exactly that version after Wrangler authentication. It preserves the domain bindings managed in Cloudflare and avoids account-wide subdomain permissions. Version preview URLs are disabled so the Worker-only token can perform this operation. Do not deploy the historical `vite.config.ts`, which belongs to the old Sites workflow.
 
 Use Workers Free, with no paid add-ons. Its request, CPU, and bundle limits still apply. This build needs only static assets and the Worker; it requires no runtime secret, database, or paid image optimization. The public GitHub feed retains five-minute fetch revalidation and a validated committed fallback. No GitHub token is exposed to visitor requests.
 

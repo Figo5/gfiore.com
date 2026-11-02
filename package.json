@@ -11,7 +11,7 @@
     "build": "node scripts/write-deployment.mjs && next build",
     "build:cloudflare": "node scripts/write-deployment.mjs && vite build --config vite.cloudflare.ts",
     "preview:cloudflare": "wrangler dev --config dist/server/wrangler.json",
-    "deploy:cloudflare": "wrangler deploy --config dist/server/wrangler.json",
+    "deploy:cloudflare": "node scripts/deploy-cloudflare.mjs",
     "start": "next start --hostname 127.0.0.1",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
