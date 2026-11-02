@@ -38,14 +38,14 @@
 ## Sources
 - https://emilkowal.ski/
 - https://rauno.me/projects
-- Civicfolio and EdgeTerminal use the approved October 30 local captures in `public/projects/*-current.jpg`. AgentOps uses its original published recording; Lab in a Box uses its published help image. SQLSage and DiffGuard use actual published CLI excerpts. Full provenance is recorded in `NOTICE.md`. CLI punctuation is published output, not authored marketing copy.
+- Civicfolio and EdgeTerminal use the approved October 30 local captures in `public/projects/*-current.jpg`. Ousel uses the November 1, 2026 recorded walkthrough; Lab in a Box uses its published help image. SQLSage and DiffGuard use actual published CLI excerpts. Full provenance is recorded in `NOTICE.md`. CLI punctuation is published output, not authored marketing copy.
 
 ## Verification
 - October 30, 2026: all 69 existing tests, TypeScript check, and the production build passed.
 - Browser checks at 1920px and 390px confirmed transparent section/slide/media surfaces, a single plain-text section control, no dropdown or native video controls, and current image sources.
 - Document width and scroll width both equal the viewport width at 1920px and 390px. The mobile section is 350px wide. CLI excerpts fit their media regions without clipping.
-- Confirmed Home/End and arrow-key navigation, wrap from the last slide to the first, native drag from Civicfolio to AgentOps, inert inactive slides, and five-second automatic progression beyond the video.
-- AgentOps reached readyState 4, muted and playing without controls; leaving its slide paused it and removed the source. Both pause controls reflected the same state.
+- Confirmed Home/End and arrow-key navigation, wrap from the last slide to the first, native drag from Civicfolio to Ousel, inert inactive slides, and five-second automatic progression beyond the video.
+- The previous recording reached readyState 4, muted and playing without controls; leaving its slide paused it and removed the source. Both pause controls reflected the same state.
 - The original background algorithm is unchanged and its existing pointer/ripple, reduced-motion, pause, cleanup, and visibility tests passed.
 - Body contrast against the brightest grain composite is 5.94:1 before the darkening overlay.
 - Re-audit: no new P0/P1 design issues in this scoped change. Existing system typography, interactive background, and literal published CLI punctuation are deliberate preserved constraints. No new fonts, icons, dependencies, or claims. Justified, coherent, and distinct from the former framed-player treatment.

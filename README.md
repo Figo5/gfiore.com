@@ -37,7 +37,7 @@ Use `npm start` to serve the production build locally. No database migrations or
 | `content/favorites.json` | Favorite albums, movies, and golf courses |
 | `app/favorite-media.ts` | Artwork matching, image sources, and photo credits |
 | `public/favorites/` | Album covers, movie posters, and course photos |
-| `public/projects/` | Original project screenshots and the AgentOps demo video |
+| `public/projects/` | Original project screenshots and the Ousel walkthrough |
 | `app/globals.css` | Layout and dark theme |
 | `app/github-data.ts` | Hosted public GitHub feed reader and committed fallback |
 | `app/github-data-core.ts` | Public GitHub source validation and feed generation logic |
