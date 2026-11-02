@@ -9,8 +9,11 @@
     "install:ci": "node scripts/install-ci.mjs",
     "dev": "next dev --hostname 127.0.0.1",
     "build": "node scripts/write-deployment.mjs && next build",
+    "build:cloudflare": "node scripts/write-deployment.mjs && vite build --config vite.cloudflare.ts",
+    "preview:cloudflare": "wrangler dev --config dist/server/wrangler.json",
+    "deploy:cloudflare": "wrangler deploy --config dist/server/wrangler.json",
     "start": "next start --hostname 127.0.0.1",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "test": "node --experimental-transform-types --test tests/*.test.mjs"

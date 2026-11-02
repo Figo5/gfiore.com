@@ -2,44 +2,56 @@
 
 ## Website publication
 
-Vercel's Git integration is the deployment path for `Figo5/gfiore.com`. Import the repository into a Vercel Hobby project and set `main` as the production branch. The checked-in `vercel.json` supplies the framework and commands:
+The public site targets the `gfiore-com` Cloudflare Worker. Its temporary address is <https://gfiore-com.ginoman525.workers.dev>. The original Next.js app remains intact; the Cloudflare build uses the existing pinned vinext beta with a separate `vite.cloudflare.ts`, without the historical Sites database or connector bindings.
 
 | Setting | Value |
 | --- | --- |
-| Base directory | Repository root |
+| Git repository | `Figo5/gfiore.com` |
 | Production branch | `main` |
-| Build command | `npm test && npm run typecheck && npm run build` |
 | Install command | `npm ci` |
-| Framework/output directory | Next.js / framework default |
-| Node.js version | `24.x` in Vercel project settings |
+| Build command | `npm test && npm run typecheck && npm run build:cloudflare` |
+| Deploy command | `npm run deploy:cloudflare` |
+| Node.js version | `24` |
+| Worker configuration | `wrangler.jsonc` |
+| Generated deploy configuration | `dist/server/wrangler.json` |
 
-Vercel's native Next.js integration supports the App Router, server routes, and persistent fetch revalidation. Keep `.vercel/` ignored. This personal site requires no runtime secrets or database. Use the free Hobby plan for this personal, non-commercial site.
+The `.github/workflows/cloudflare.yml` workflow runs these commands on GitHub Actions for `main` pushes and manual dispatches. Configure the repository secret `CLOUDFLARE_DEPLOY_TOKEN` with a Cloudflare Individual Workers Editor token scoped only to `gfiore-com`. The workflow never deploys pull request code or the data-only `github-data` branch. A failed check or build leaves the previous successful version serving visitors. No separate Cloudflare Git integration is required.
 
-For a content or code change:
+Build and test locally with:
 
-1. Edit the relevant file in GitHub, or push a local change to a branch.
-2. Commit to `main`, or merge the pull request into `main`.
-3. Vercel checks out the commit, installs dependencies, runs the tests and TypeScript check, and builds the site.
-4. A successful build is published as an atomic deployment. A failed check or build leaves the previous successful deployment serving visitors. Fix the failure and push a new commit.
+```sh
+npm ci
+npm test
+npm run typecheck
+npm run build:cloudflare
+npm run preview:cloudflare
+```
 
-This runs on Vercel's cloud infrastructure. No desktop computer, local publisher state file, scheduled Codex task, or Sites source credential is part of the deployment path. Limit production builds to `main`; the separate `github-data` branch contains feed data and does not need website deployments. In Vercel's Git settings, use a custom Ignored Build Step of `test "$VERCEL_GIT_COMMIT_REF" = "github-data"` to skip that branch while retaining normal preview builds.
+The preview uses the actual Workers runtime. `npm run deploy:cloudflare` publishes the generated build after Wrangler authentication. Do not deploy the historical `vite.config.ts`, which belongs to the old Sites workflow.
 
-Configure `gfiore.com` and `www.gfiore.com` on the Vercel project using the exact DNS records supplied by Vercel. Verify the deployment at its Vercel URL before switching the domain records, then verify HTTPS on both domains. Preserve unrelated email and verification records. Repository configuration alone does not connect the GitHub integration or change DNS.
+Use Workers Free, with no paid add-ons. Its request, CPU, and bundle limits still apply. This build needs only static assets and the Worker; it requires no runtime secret, database, or paid image optimization. The public GitHub feed retains five-minute fetch revalidation and a validated committed fallback. No GitHub token is exposed to visitor requests.
 
-After confirming the Vercel custom domains, disable Git builds on the previous Netlify project so future commits do not consume its allowance. Keep the existing Netlify deployment available during cutover. `netlify.toml` remains as the previous host's configuration; Vercel does not use it.
+### Custom domain cutover
+
+Add `gfiore.com` to Cloudflare on the free domain plan, copy all existing DNS records, and verify the imported records against Namecheap before changing nameservers. Preserve email, verification, and other unrelated records. The domain registration stays at Namecheap; Cloudflare becomes the DNS provider.
+
+After the Workers deployment is verified, attach both `gfiore.com` and `www.gfiore.com` as Worker Custom Domains. Use Cloudflare's exact assigned nameservers in Namecheap. Verify HTTPS and the endpoints below on both domains after activation. Retain the old Netlify deployment during the change; `netlify.toml` remains as recovery configuration. Once the domain is confirmed on Cloudflare, stop Git builds at Netlify.
+
+The Vercel attempt was blocked before project creation because the existing Hobby team was paused for CPU usage. No Vercel hosting or paid upgrade was activated.
 
 ### Deployment verification
 
-`npm run build` writes `public/deployment.json` with the repository, production branch, and full GitHub commit. Vercel's `VERCEL_GIT_COMMIT_SHA` supplies the build's commit. The previous host's `COMMIT_REF` remains supported; local builds use `git rev-parse HEAD`. Enable Vercel's system environment variables for Git metadata.
+`npm run build:cloudflare` writes `public/deployment.json` with the repository and full Git commit. Cloudflare's `WORKERS_CI_COMMIT_SHA` supplies hosted build metadata; Vercel's `VERCEL_GIT_COMMIT_SHA`, Netlify's `COMMIT_REF`, and local Git remain supported for alternate builds.
 
 After publishing, check both custom domains:
 
-- `/deployment.json` reports the intended `main` commit.
-- The homepage loads the expected experience, projects, reports and outcomes, favorites, and images.
+- `/deployment.json` matches the deployed Git commit.
+- `/` serves the current experience, Ousel walkthrough, and upgrade-check project.
 - `/api/github` returns a valid public snapshot.
-- `/api/profile` returns the committed favorites with `canEdit: false`; `PUT /api/profile` returns `405`.
+- `/api/profile` returns committed favorites with `canEdit: false`; `PUT /api/profile` returns `405`.
+- The carousel responds to keyboard navigation and the Ousel video loads.
 
-When investigating a failed build, use the Vercel deployment log for the failing commit. Do not change production DNS or bypass failed checks to publish an unverified build.
+Use the GitHub Actions deployment log to investigate failures. Do not bypass failed checks or switch DNS to an unverified deployment.
 
 ## Personal content
 
@@ -65,4 +77,4 @@ Report selection, outcome wording, experience, and favorites stay curated. The r
 
 ## Historical Sites tooling
 
-The repository retains the earlier Sites sync helper, `.openai` hosting metadata, and D1 schema/migrations as historical tooling. They are not called by the Next.js runtime or Vercel build. The previous local polling publisher is not required for Git continuous deployment, and its state file is not a deployment authority.
+The repository retains the earlier Sites sync helper, `.openai` hosting metadata, and D1 schema/migrations as historical tooling. They are not called by the public site runtime or Cloudflare build. The previous local polling publisher is not required for Git continuous deployment, and its state file is not a deployment authority.
