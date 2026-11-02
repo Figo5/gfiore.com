@@ -17,6 +17,7 @@ __pycache__/
 
 # Generated builds and framework state
 /.netlify/
+/.vercel/
 /public/deployment.json
 /dist/
 /.next/

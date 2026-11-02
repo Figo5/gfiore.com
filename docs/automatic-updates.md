@@ -2,32 +2,35 @@
 
 ## Website publication
 
-Netlify's Git integration is the deployment path for `Figo5/gfiore.com`. Connect the repository to a Netlify project and set `main` as the production branch. The checked-in `netlify.toml` supplies:
+Vercel's Git integration is the deployment path for `Figo5/gfiore.com`. Import the repository into a Vercel Hobby project and set `main` as the production branch. The checked-in `vercel.json` supplies the framework and commands:
 
 | Setting | Value |
 | --- | --- |
 | Base directory | Repository root |
 | Production branch | `main` |
 | Build command | `npm test && npm run typecheck && npm run build` |
-| Publish directory | `.next` |
-| Node.js version | `24` |
+| Install command | `npm ci` |
+| Framework/output directory | Next.js / framework default |
+| Node.js version | `24.x` in Vercel project settings |
 
-Netlify supports the Next.js App Router and server routes through its OpenNext adapter. Use its automatically managed adapter rather than pinning a version. Keep `.netlify/` ignored and leave production deploys unlocked so successful Git builds can publish automatically.
+Vercel's native Next.js integration supports the App Router, server routes, and persistent fetch revalidation. Keep `.vercel/` ignored. This personal site requires no runtime secrets or database. Use the free Hobby plan for this personal, non-commercial site.
 
 For a content or code change:
 
 1. Edit the relevant file in GitHub, or push a local change to a branch.
 2. Commit to `main`, or merge the pull request into `main`.
-3. Netlify checks out the commit, installs dependencies, runs the tests and TypeScript check, and builds the site.
+3. Vercel checks out the commit, installs dependencies, runs the tests and TypeScript check, and builds the site.
 4. A successful build is published as an atomic deployment. A failed check or build leaves the previous successful deployment serving visitors. Fix the failure and push a new commit.
 
-This runs on Netlify's cloud infrastructure. No desktop computer, local publisher state file, scheduled Codex task, or Sites source credential is part of the deployment path. Limit production builds to `main`; the separate `github-data` branch contains feed data and does not need website deployments.
+This runs on Vercel's cloud infrastructure. No desktop computer, local publisher state file, scheduled Codex task, or Sites source credential is part of the deployment path. Limit production builds to `main`; the separate `github-data` branch contains feed data and does not need website deployments. In Vercel's Git settings, use a custom Ignored Build Step of `test "$VERCEL_GIT_COMMIT_REF" = "github-data"` to skip that branch while retaining normal preview builds.
 
-Configure `gfiore.com` and `www.gfiore.com` on the Netlify project using the DNS records supplied by Netlify. Verify a successful project deploy and HTTPS before switching the domains. Repository configuration alone does not connect the GitHub integration or change DNS.
+Configure `gfiore.com` and `www.gfiore.com` on the Vercel project using the exact DNS records supplied by Vercel. Verify the deployment at its Vercel URL before switching the domain records, then verify HTTPS on both domains. Preserve unrelated email and verification records. Repository configuration alone does not connect the GitHub integration or change DNS.
+
+After confirming the Vercel custom domains, disable Git builds on the previous Netlify project so future commits do not consume its allowance. Keep the existing Netlify deployment available during cutover. `netlify.toml` remains as the previous host's configuration; Vercel does not use it.
 
 ### Deployment verification
 
-`npm run build` writes `public/deployment.json` with the repository, branch, and full GitHub commit. Netlify's `COMMIT_REF` supplies the build's commit; local builds use `git rev-parse HEAD`.
+`npm run build` writes `public/deployment.json` with the repository, production branch, and full GitHub commit. Vercel's `VERCEL_GIT_COMMIT_SHA` supplies the build's commit. The previous host's `COMMIT_REF` remains supported; local builds use `git rev-parse HEAD`. Enable Vercel's system environment variables for Git metadata.
 
 After publishing, check both custom domains:
 
@@ -36,7 +39,7 @@ After publishing, check both custom domains:
 - `/api/github` returns a valid public snapshot.
 - `/api/profile` returns the committed favorites with `canEdit: false`; `PUT /api/profile` returns `405`.
 
-When investigating a failed build, use the Netlify deploy log for the failing commit. Do not change production DNS or bypass failed checks to publish an unverified build.
+When investigating a failed build, use the Vercel deployment log for the failing commit. Do not change production DNS or bypass failed checks to publish an unverified build.
 
 ## Personal content
 
@@ -62,4 +65,4 @@ Report selection, outcome wording, experience, and favorites stay curated. The r
 
 ## Historical Sites tooling
 
-The repository retains the earlier Sites sync helper, `.openai` hosting metadata, and D1 schema/migrations as historical tooling. They are not called by the Next.js runtime or Netlify build. The previous local polling publisher is not required for Git continuous deployment, and its state file is not a deployment authority.
+The repository retains the earlier Sites sync helper, `.openai` hosting metadata, and D1 schema/migrations as historical tooling. They are not called by the Next.js runtime or Vercel build. The previous local polling publisher is not required for Git continuous deployment, and its state file is not a deployment authority.
