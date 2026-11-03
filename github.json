@@ -1,32 +1,39 @@
 {
   "repositories": {
-    "ousel": {
-      "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
+    "sqlsage": {
+      "description": "PostgreSQL query analysis and rewrite suggestions.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-02T02:02:10.000Z",
+      "pushedAt": "2026-11-02T21:50:08.000Z",
       "archived": false,
-      "url": "https://github.com/Figo5/ousel"
-    },
-    "gfiore.com": {
-      "description": "My personal website: experience, projects, findings, and favorites.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-02T01:48:50.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gfiore.com"
-    },
-    "upgrade-check-skill": {
-      "description": "A coding-agent skill that tests whether an update still works for existing saved data",
-      "language": "JavaScript",
-      "pushedAt": "2026-11-01T22:06:20.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/upgrade-check-skill"
+      "url": "https://github.com/Figo5/sqlsage"
     },
     "kubernetes": {
       "description": "Production-Grade Container Scheduling and Management",
       "language": null,
-      "pushedAt": "2026-10-26T18:05:27.000Z",
+      "pushedAt": "2026-11-02T21:50:06.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/kubernetes"
+    },
+    "upgrade-check-skill": {
+      "description": "A coding-agent skill that tests whether an update still works for existing saved data",
+      "language": "JavaScript",
+      "pushedAt": "2026-11-02T21:50:04.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/upgrade-check-skill"
+    },
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-02T21:50:02.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
+    },
+    "ousel": {
+      "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-02T21:47:08.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/ousel"
     },
     "figo5": {
       "description": "Tools and side projects.",
@@ -62,13 +69,6 @@
       "pushedAt": "2026-10-17T20:25:52.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/edgeterminal"
-    },
-    "sqlsage": {
-      "description": "PostgreSQL query analysis and rewrite suggestions.",
-      "language": "TypeScript",
-      "pushedAt": "2026-10-17T20:25:41.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/sqlsage"
     },
     "balatroaisparring": {
       "description": "Experimental local Balatro AI practice companion. Development in progress; not yet playable.",
@@ -114,16 +114,6 @@
     }
   },
   "issues": {
-    "mafintosh/tar-fs#122": {
-      "state": "open",
-      "url": "https://github.com/mafintosh/tar-fs/issues/122",
-      "updatedAt": "2026-10-23T18:17:28.000Z"
-    },
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
       "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
@@ -133,6 +123,16 @@
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
+    },
+    "mafintosh/tar-fs#122": {
+      "state": "open",
+      "url": "https://github.com/mafintosh/tar-fs/issues/122",
+      "updatedAt": "2026-10-23T18:17:28.000Z"
     }
   },
   "contributions": [
@@ -164,6 +164,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-02T06:15:28.973Z",
+  "fetchedAt": "2026-11-03T01:02:02.729Z",
   "stale": false
 }
