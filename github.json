@@ -1,18 +1,18 @@
 {
   "repositories": {
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-03T19:33:33.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
+    },
     "chia-blockchain": {
       "description": "Chia blockchain python implementation (full node, farmer, harvester, timelord, and wallet)",
       "language": null,
       "pushedAt": "2026-11-03T13:58:39.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/chia-blockchain"
-    },
-    "gfiore.com": {
-      "description": "My personal website: experience, projects, findings, and favorites.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-03T01:02:06.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gfiore.com"
     },
     "sqlsage": {
       "description": "PostgreSQL query analysis and rewrite suggestions.",
@@ -121,25 +121,25 @@
     }
   },
   "issues": {
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
-    "nodejs/node#66853": {
+    "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
-      "url": "https://github.com/nodejs/node/issues/66853",
-      "updatedAt": "2026-10-19T16:12:40.000Z"
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
     },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
     },
-    "oapi-codegen/nethttp-middleware#89": {
+    "nodejs/node#66853": {
       "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
+      "url": "https://github.com/nodejs/node/issues/66853",
+      "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     }
   },
   "contributions": [
@@ -171,6 +171,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-03T14:23:33.714Z",
+  "fetchedAt": "2026-11-03T23:26:49.594Z",
   "stale": false
 }
