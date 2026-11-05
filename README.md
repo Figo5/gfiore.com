@@ -56,7 +56,7 @@ This build uses the pinned vinext beta and a local Workers preview. The standard
 | `vite.cloudflare.ts`, `wrangler.jsonc` | Cloudflare Workers build and runtime configuration |
 | `netlify.toml` | Previous Netlify configuration, retained during the hosting migration |
 
-Edit a file on GitHub and commit it to `main`, or merge a pull request. With the deployment secret configured, GitHub Actions runs the checks and publishes each `main` update to Cloudflare. The footer's **Edit favorites** link opens the favorites file in GitHub. Image matching uses the favorite titles, so adding a new title may also require a media entry and an image.
+Edit a file on GitHub and commit it to `main`, or merge a pull request. With the deployment secret configured, GitHub Actions runs the checks and publishes each `main` update to Cloudflare. Edit favorites directly in `content/favorites.json`. Image matching uses the favorite titles, so adding a new title may also require a media entry and an image.
 
 ## Automatic updates
 
