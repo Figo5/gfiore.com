@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-08T06:08:52.000Z",
+      "pushedAt": "2026-11-08T17:42:47.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -27,13 +27,6 @@
       "pushedAt": "2026-11-02T21:50:06.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/kubernetes"
-    },
-    "upgrade-check-skill": {
-      "description": "A coding-agent skill that tests whether an update still works for existing saved data",
-      "language": "JavaScript",
-      "pushedAt": "2026-11-02T21:50:04.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/upgrade-check-skill"
     },
     "ousel": {
       "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
@@ -131,15 +124,15 @@
       "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
       "updatedAt": "2026-10-24T11:09:52.000Z"
     },
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     }
   },
   "contributions": [
@@ -171,6 +164,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-08T13:30:21.689Z",
+  "fetchedAt": "2026-11-08T22:11:23.279Z",
   "stale": false
 }
