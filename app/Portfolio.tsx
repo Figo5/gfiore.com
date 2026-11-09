@@ -25,7 +25,10 @@ const projects: Project[] = [
 ];
 
 const findings: Finding[] = [
+  { project: "adm-zip", title: "ZIP entry-name validation bypass", description: "Found and reproduced a mismatch between ZIP entry validation and extraction. The published CVE credits Giovanni Fiore (Figo5) as the finder.", outcome: "CVE finder credit · Nov 9, 2026", url: "https://www.cve.org/CVERecord?id=CVE-2026-116137", number: "CVE-2026-116137", reference: { label: "Public report", url: "https://github.com/cthackers/adm-zip/issues/587" } },
+  { project: "simple-git", title: "Command-execution guard coverage", description: "Reported a gap in command-execution guards. The maintainer acknowledged my report in a merged fix that extends --exec checks across Git commands.", outcome: "Fix merged · Nov 9, 2026", url: "https://github.com/steveukx/git-js/pull/1206", number: "PR #1206" },
   { project: "mcp-sanitizer", title: "Exported validator fix gaps", description: "Found and reproduced an incomplete fix in the exported URL and file-path validators. The maintainer fixed it in 1.4.2 and published a High advisory with reporter credit.", outcome: "Fixed in 1.4.2 · Oct 31, 2026", url: "https://github.com/starman69/mcp-sanitizer/security/advisories/GHSA-v25x-53wq-6r99", number: "GHSA-v25x-53wq-6r99", reference: { label: "Merged fix", url: "https://github.com/starman69/mcp-sanitizer/pull/14" } },
+  { project: "SiYuan", title: "Skill-download SSRF bypass", description: "Found and reproduced a skill-download path that bypassed server-side request forgery protections. The published Medium advisory credits Figo5 as reporter.", outcome: "Published reporter credit · Oct 29, 2026", url: "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-6pg3-pqxw-jm82", number: "GHSA-6pg3-pqxw-jm82" },
   { project: "qs", title: "Object-input prototype assignment", description: "Found and reproduced a parsing regression that assigned an attacker-controlled prototype. The upstream fix references my report and copies the key as data.", outcome: "Fix merged · Oct 27, 2026", url: "https://github.com/ljharb/qs/issues/633", number: "#633", reference: { label: "Merged fix", url: "https://github.com/ljharb/qs/pull/636" } },
 ];
 
@@ -93,10 +96,10 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
             </section>
 
             <aside className="findings-column" aria-labelledby="findings-title">
-              <div className="column-heading"><h2 id="findings-title">Completed fixes</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <p className="column-intro">Public reports with fixes merged and released.</p>
+              <div className="column-heading"><h2 id="findings-title">Security research</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+              <p className="column-intro">Public findings, finder credits, and upstream acknowledgments.</p>
               <div className="findings-list">{findings.map(finding => <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} report ${finding.number}`}>{finding.number}</a></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{finding.outcome}</span>{finding.reference && <a href={finding.reference.url} target="_blank" rel="noopener noreferrer">{finding.reference.label}</a>}</div></article>)}</div>
-              <p className="dated-note">Reports reviewed November 2, 2026.</p>
+              <p className="dated-note">Reports reviewed November 9, 2026.</p>
             </aside>
           </div>
 
