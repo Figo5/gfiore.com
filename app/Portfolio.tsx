@@ -8,7 +8,7 @@ import { FEATURED_PROJECT_URLS } from "./featured-projects/projects";
 
 type FavoriteCategory = "albums" | "movies" | "courses";
 
-type Project = { name: string; description: string; stack: string; url?: string; stage?: string; notes?: string[] };
+type Project = { name: string; description: string; stack: string; url?: string; linkLabel?: string; stage?: string; notes?: string[] };
 type Finding = { project: string; title: string; description: string; outcome: string; url: string; number: string; reference?: { label: string; url: string } };
 
 const projects: Project[] = [
@@ -18,7 +18,7 @@ const projects: Project[] = [
   { name: "Balatro AI Sparring", description: "An experimental local AI practice companion for Balatro.", stack: "Python · AI", url: "https://github.com/Figo5/BalatroAISparring", stage: "In development", notes: ["Development is in progress; it is not yet playable."] },
   { name: "SQLSage", description: "A PostgreSQL CLI for query analysis and rewrite suggestions.", stack: "TypeScript · PostgreSQL", url: "https://github.com/Figo5/sqlsage" },
   { name: "Ousel", description: "A local workspace for understanding what a coding-agent team is doing and what needs review.", stack: "TypeScript · Developer tools", url: "https://github.com/Figo5/ousel" },
-  { name: "upgrade-check", description: "Guides coding agents through baseline-to-candidate upgrade tests for saved data, boundary values, and restart persistence.", stack: "Agent skill · Upgrade testing", stage: "Agensi review pending" },
+  { name: "upgrade-check", description: "Guides coding agents through upgrade tests for saved data, settings, boundary values, and restart persistence.", stack: "Agent skill · Upgrade testing", url: "https://www.agensi.io/skills/upgrade-check", linkLabel: "Agensi", stage: "Live on Agensi" },
   { name: "EdgeTerminal", description: "A local NFL research beta for comparing prices, inspecting projections, and tracking forecasts.", stack: "Python · Research tools", url: "https://github.com/Figo5/edgeterminal", stage: "Beta" },
   { name: "Lab in a Box", description: "A local Docker lab for practicing web, API, and SSH security.", stack: "Python · Docker", url: "https://github.com/Figo5/lab-in-a-box" },
   { name: "DiffGuard", description: "AI-assisted git diff reviews for security issues and unintended behavior changes.", stack: "TypeScript · Code review", url: "https://github.com/Figo5/diffguard" },
@@ -88,7 +88,7 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
                 return <article className="project-row" key={project.name}>
                   <div className="item-heading"><h3>{project.url ? <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a> : project.name}</h3>{stage && <span>{stage}</span>}</div>
                   <p>{repository?.description || project.description}</p>
-                  <div className="item-meta"><span>{stack}{pushed && <span className="project-updated"> · Updated {pushed}</span>}</span>{project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`}>GitHub</a>}</div>
+                  <div className="item-meta"><span>{stack}{pushed && <span className="project-updated"> · Updated {pushed}</span>}</span>{project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on ${project.linkLabel || "GitHub"}`}>{project.linkLabel || "GitHub"}</a>}</div>
                   {project.notes && <details className="project-details"><summary>Details</summary><div>{project.notes.map(note => <p key={note}>{note}</p>)}</div></details>}
                 </article>;
               })}</div>
