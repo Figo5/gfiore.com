@@ -1,9 +1,16 @@
 {
   "repositories": {
+    "edgeterminal": {
+      "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
+      "language": "Python",
+      "pushedAt": "2026-11-12T15:00:09.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/edgeterminal"
+    },
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-11T19:39:35.000Z",
+      "pushedAt": "2026-11-12T07:18:10.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -70,13 +77,6 @@
       "archived": false,
       "url": "https://github.com/Figo5/parcel-pack"
     },
-    "edgeterminal": {
-      "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
-      "language": "Python",
-      "pushedAt": "2026-10-17T20:25:52.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/edgeterminal"
-    },
     "balatroaisparring": {
       "description": "Experimental local Balatro AI practice companion. Development in progress; not yet playable.",
       "language": "Python",
@@ -121,15 +121,15 @@
     }
   },
   "issues": {
-    "nodejs/node#66853": {
-      "state": "open",
-      "url": "https://github.com/nodejs/node/issues/66853",
-      "updatedAt": "2026-10-19T16:12:40.000Z"
-    },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
+    },
+    "nodejs/node#66853": {
+      "state": "open",
+      "url": "https://github.com/nodejs/node/issues/66853",
+      "updatedAt": "2026-10-19T16:12:40.000Z"
     },
     "follow-redirects/follow-redirects#294": {
       "state": "closed",
@@ -171,6 +171,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-12T07:18:08.362Z",
+  "fetchedAt": "2026-11-12T19:58:54.852Z",
   "stale": false
 }
