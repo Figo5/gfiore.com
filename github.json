@@ -1,18 +1,18 @@
 {
   "repositories": {
-    "gfiore.com": {
-      "description": "My personal website: experience, projects, findings, and favorites.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-12T19:58:56.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gfiore.com"
-    },
     "edgeterminal": {
       "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
       "language": "Python",
-      "pushedAt": "2026-11-12T15:00:09.000Z",
+      "pushedAt": "2026-11-13T13:22:40.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/edgeterminal"
+    },
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-13T06:51:44.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
     },
     "balatro-overhaul": {
       "description": "A free fan mod for Balatro: online multiplayer, new modes, integrated mod support, cross platform, and much more !",
@@ -121,15 +121,15 @@
     }
   },
   "issues": {
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
+    },
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     },
     "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
@@ -171,6 +171,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-13T06:51:42.360Z",
+  "fetchedAt": "2026-11-13T19:46:21.801Z",
   "stale": false
 }
