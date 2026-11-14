@@ -1,18 +1,18 @@
 {
   "repositories": {
+    "gfiore.com": {
+      "description": "My personal website: experience, projects, findings, and favorites.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-13T19:46:23.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gfiore.com"
+    },
     "edgeterminal": {
       "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
       "language": "Python",
       "pushedAt": "2026-11-13T13:22:40.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/edgeterminal"
-    },
-    "gfiore.com": {
-      "description": "My personal website: experience, projects, findings, and favorites.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-13T06:51:44.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gfiore.com"
     },
     "balatro-overhaul": {
       "description": "A free fan mod for Balatro: online multiplayer, new modes, integrated mod support, cross platform, and much more !",
@@ -121,6 +121,11 @@
     }
   },
   "issues": {
+    "oapi-codegen/nethttp-middleware#89": {
+      "state": "open",
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
+    },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
@@ -131,11 +136,6 @@
       "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
       "updatedAt": "2026-10-22T15:08:10.000Z"
     },
-    "oapi-codegen/nethttp-middleware#89": {
-      "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
-    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
@@ -144,25 +144,25 @@
   },
   "contributions": [
     {
-      "title": "wallet: check v2 proof quality before hashing reward-chain blocks",
-      "url": "https://github.com/Chia-Network/chia-blockchain/pull/21618",
-      "repository": "Chia-Network/chia-blockchain",
-      "action": "Pull request",
-      "occurredAt": "2026-11-03T13:46:04.000Z"
-    },
-    {
-      "title": "copyInput reintroduces __proto__ assignment for object input (regression of the 6.15.3 fix)",
-      "url": "https://github.com/ljharb/qs/issues/633",
-      "repository": "ljharb/qs",
-      "action": "Public report",
-      "occurredAt": "2026-10-21T20:41:28.000Z"
-    },
-    {
       "title": "admission: AlwaysPullImages: support ephemeral containers",
       "url": "https://github.com/kubernetes/kubernetes/pull/143422",
       "repository": "kubernetes/kubernetes",
       "action": "Pull request",
       "occurredAt": "2026-10-26T15:32:21.000Z"
+    },
+    {
+      "title": "nodedeclaredfeatures: validate the pods/ephemeralcontainers subresource",
+      "url": "https://github.com/kubernetes/kubernetes/pull/143424",
+      "repository": "kubernetes/kubernetes",
+      "action": "Pull request",
+      "occurredAt": "2026-10-26T16:21:28.000Z"
+    },
+    {
+      "title": "wallet: check v2 proof quality before hashing reward-chain blocks",
+      "url": "https://github.com/Chia-Network/chia-blockchain/pull/21618",
+      "repository": "Chia-Network/chia-blockchain",
+      "action": "Pull request",
+      "occurredAt": "2026-11-03T13:46:04.000Z"
     }
   ],
   "latestRelease": {
@@ -171,6 +171,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-13T19:46:21.801Z",
+  "fetchedAt": "2026-11-14T06:31:48.126Z",
   "stale": false
 }
