@@ -21,3 +21,5 @@ body{position:relative;isolation:isolate}
 @media(max-width:720px){.grain-background canvas{opacity:.22}.grain-background::after{background:#11141644}}
 @media(prefers-reduced-motion:reduce){.background-toggle{display:none}}
 .project-updated{color:var(--muted)}
+
+.contributions-section{margin-top:34px}

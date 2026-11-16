@@ -14,6 +14,7 @@ type Finding = { project: string; title: string; description: string; outcome: s
 const projects: Project[] = [
   { name: "FairwayOS", description: "A golf-video analysis prototype for tracking the ball, clubhead, golfer, and cup.", stack: "Python · Computer vision", url: "https://github.com/Figo5/fairwayos", stage: "Prototype", notes: ["Development is paused at a research checkpoint."] },
   { name: "Gmail Tidy", description: "A Gmail cleanup CLI using declarative, non-destructive rules.", stack: "Python · CLI", url: "https://github.com/Figo5/gmail-tidy" },
+  { name: "Parcel Pack", description: "A SwiftUI packing puzzle with on-device level generation, hints, and local saves.", stack: "Swift · SwiftUI", url: "https://github.com/Figo5/parcel-pack", stage: "Source available", notes: ["Core tests and the shared interface were checked on macOS. iOS compilation and iPhone verification are pending."] },
   { name: "Civicfolio", description: "A local-first stock research app with cited hypotheses, market context, and a research journal.", stack: "TypeScript · Research tools", url: "https://github.com/Figo5/civicfolio" },
   { name: "Balatro AI Sparring", description: "An experimental local AI practice companion for Balatro.", stack: "Python · AI", url: "https://github.com/Figo5/BalatroAISparring", stage: "In development", notes: ["Development is in progress; it is not yet playable."] },
   { name: "SQLSage", description: "A PostgreSQL CLI for query analysis and rewrite suggestions.", stack: "TypeScript · PostgreSQL", url: "https://github.com/Figo5/sqlsage" },
@@ -27,10 +28,17 @@ const projects: Project[] = [
 const findings: Finding[] = [
   { project: "Hono & node-server", title: "Static-file middleware bypass", description: "Found and reproduced a path-decoding gap that could bypass prefix-specific authentication middleware when allowPercentInPath is enabled. Published Medium advisories credit Figo5 as reporter in both packages, with fixes released in hono 4.13.18 and @hono/node-server 2.1.7.", outcome: "Both packages fixed · Nov 11, 2026", url: "https://github.com/honojs/hono/security/advisories/GHSA-74fm-fwc7-3fwp", number: "GHSA-74fm-fwc7-3fwp", reference: { label: "node-server advisory", url: "https://github.com/honojs/node-server/security/advisories/GHSA-fj57-4f93-cfw6" } },
   { project: "adm-zip", title: "ZIP entry-name validation bypass", description: "Found and reproduced a mismatch between ZIP entry validation and extraction. The published CVE credits Giovanni Fiore (Figo5) as the finder.", outcome: "CVE finder credit · Nov 9, 2026", url: "https://www.cve.org/CVERecord?id=CVE-2026-116137", number: "CVE-2026-116137", reference: { label: "Public report", url: "https://github.com/cthackers/adm-zip/issues/587" } },
-  { project: "simple-git", title: "Command-execution guard coverage", description: "Reported a gap in command-execution guards. The maintainer acknowledged my report in a merged fix that extends --exec checks across Git commands.", outcome: "Fix merged · Nov 9, 2026", url: "https://github.com/steveukx/git-js/pull/1206", number: "PR #1206" },
+  { project: "simple-git", title: "Command-execution guard coverage", description: "Reported a gap in command-execution guards. The maintainer acknowledged my report in a merged fix that extends --exec checks across Git commands. The pending 4.1.0 release notes also thank Figo5.", outcome: "Fix merged · Release pending", url: "https://github.com/steveukx/git-js/pull/1206", number: "PR #1206", reference: { label: "Pending release notes", url: "https://github.com/steveukx/git-js/pull/1207" } },
   { project: "mcp-sanitizer", title: "Exported validator fix gaps", description: "Found and reproduced an incomplete fix in the exported URL and file-path validators. The maintainer fixed it in 1.4.2 and published a High advisory with reporter credit.", outcome: "Fixed in 1.4.2 · Oct 31, 2026", url: "https://github.com/starman69/mcp-sanitizer/security/advisories/GHSA-v25x-53wq-6r99", number: "GHSA-v25x-53wq-6r99", reference: { label: "Merged fix", url: "https://github.com/starman69/mcp-sanitizer/pull/14" } },
   { project: "SiYuan", title: "Skill-download SSRF bypass", description: "Found and reproduced a skill-download path that bypassed server-side request forgery protections. The published Medium advisory credits Figo5 as reporter and identifies the now-released v3.8.10 as patched.", outcome: "Patched release available · v3.8.10", url: "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-6pg3-pqxw-jm82", number: "GHSA-6pg3-pqxw-jm82", reference: { label: "v3.8.10 release", url: "https://github.com/siyuan-note/siyuan/releases/tag/v3.8.10" } },
   { project: "qs", title: "Object-input prototype assignment", description: "Found and reproduced a parsing regression that assigned an attacker-controlled prototype. The upstream fix references my report and copies the key as data.", outcome: "Fix merged · Oct 27, 2026", url: "https://github.com/ljharb/qs/issues/633", number: "#633", reference: { label: "Merged fix", url: "https://github.com/ljharb/qs/pull/636" } },
+  { project: "AJV", title: "Unexpected properties pass validation", description: "Reported a validation gap that lets prototype-named properties pass a schema intended to reject unexpected keys. A community response discusses the security implications; no maintainer acceptance or fix is confirmed.", outcome: "Open report · No confirmed fix", url: "https://github.com/ajv-validator/ajv/issues/2685", number: "#2685", reference: { label: "Community response", url: "https://github.com/ajv-validator/ajv/issues/2685#issuecomment-6914785599" } },
+];
+
+const contributions: Project[] = [
+  { name: "Kubernetes: image-pull enforcement", description: "Submitted a fix to enforce the required image-pull policy on newly added ephemeral containers, including those that reuse an existing image. Builds on an earlier contributor's attempt.", stack: "Go", url: "https://github.com/kubernetes/kubernetes/pull/143422", linkLabel: "PR #143422", stage: "PR open" },
+  { name: "Kubernetes: node compatibility", description: "Submitted a fix to check node feature requirements when ephemeral containers are added, while preserving existing containers.", stack: "Go", url: "https://github.com/kubernetes/kubernetes/pull/143424", linkLabel: "PR #143424", stage: "PR open" },
+  { name: "Chia: wallet validation guard", description: "Proposed an early validation check to reject malformed block data before wallet hashing can panic. The hash panic was reproduced locally; an end-to-end wallet failure was not tested.", stack: "Python", url: "https://github.com/Chia-Network/chia-blockchain/pull/21618", linkLabel: "PR #21618", stage: "PR open" },
 ];
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
@@ -79,28 +87,41 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
           <FeaturedProjects />
 
           <div className="main-columns">
-            <section className="projects-column" aria-labelledby="projects-title">
-              <div className="column-heading"><h2 id="projects-title">More projects</h2><a className="subtle-link" href="https://github.com/Figo5?tab=repositories" target="_blank" rel="noopener noreferrer">All repos</a></div>
-              <div className="project-list">{projects.filter(project => !project.url || !FEATURED_PROJECT_URLS.has(project.url)).map(project => {
-                const repository = project.url ? github.repositories[repositoryName(project.url)] : undefined;
-                const stage = repository?.archived ? "Archived" : project.stage;
-                const pushed = shortDate(repository?.pushedAt ?? null);
-                const stack = repository?.language ? [repository.language, ...project.stack.split(" · ").slice(1)].join(" · ") : project.stack;
-                return <article className="project-row" key={project.name}>
-                  <div className="item-heading"><h3>{project.url ? <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a> : project.name}</h3>{stage && <span>{stage}</span>}</div>
-                  <p>{repository?.description || project.description}</p>
-                  <div className="item-meta"><span>{stack}{pushed && <span className="project-updated"> · Updated {pushed}</span>}</span>{project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on ${project.linkLabel || "GitHub"}`}>{project.linkLabel || "GitHub"}</a>}</div>
-                  {project.notes && <details className="project-details"><summary>Details</summary><div>{project.notes.map(note => <p key={note}>{note}</p>)}</div></details>}
-                </article>;
-              })}</div>
-              <p className="dated-note">{github.fetchedAt ? `${github.stale ? "Last synced" : "GitHub updated"} ${shortDate(github.fetchedAt)}.` : "Project details from public GitHub repositories."}</p>
-            </section>
+            <div className="projects-column">
+              <section aria-labelledby="projects-title">
+                <div className="column-heading"><h2 id="projects-title">More projects</h2><a className="subtle-link" href="https://github.com/Figo5?tab=repositories" target="_blank" rel="noopener noreferrer">All repos</a></div>
+                <div className="project-list">{projects.filter(project => !project.url || !FEATURED_PROJECT_URLS.has(project.url)).map(project => {
+                  const repository = project.url ? github.repositories[repositoryName(project.url)] : undefined;
+                  const stage = repository?.archived ? "Archived" : project.stage;
+                  const pushed = shortDate(repository?.pushedAt ?? null);
+                  const stack = repository?.language ? [repository.language, ...project.stack.split(" · ").slice(1)].join(" · ") : project.stack;
+                  return <article className="project-row" key={project.name}>
+                    <div className="item-heading"><h3>{project.url ? <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a> : project.name}</h3>{stage && <span>{stage}</span>}</div>
+                    <p>{repository?.description || project.description}</p>
+                    <div className="item-meta"><span>{stack}{pushed && <span className="project-updated"> · Updated {pushed}</span>}</span>{project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on ${project.linkLabel || "GitHub"}`}>{project.linkLabel || "GitHub"}</a>}</div>
+                    {project.notes && <details className="project-details"><summary>Details</summary><div>{project.notes.map(note => <p key={note}>{note}</p>)}</div></details>}
+                  </article>;
+                })}</div>
+                <p className="dated-note">{github.fetchedAt ? `${github.stale ? "Last synced" : "GitHub updated"} ${shortDate(github.fetchedAt)}.` : "Project details from public GitHub repositories."}</p>
+              </section>
+
+              <section className="contributions-section" aria-labelledby="contributions-title">
+                <div className="column-heading"><h2 id="contributions-title">Open-source contributions</h2></div>
+                <p className="column-intro">Proposed upstream fixes awaiting review and merge.</p>
+                <div className="project-list">{contributions.map(contribution => <article className="project-row" key={contribution.url}>
+                  <div className="item-heading"><h3><a href={contribution.url} target="_blank" rel="noopener noreferrer">{contribution.name}</a></h3><span>{contribution.stage}</span></div>
+                  <p>{contribution.description}</p>
+                  <div className="item-meta"><span>{contribution.stack}</span><a href={contribution.url} target="_blank" rel="noopener noreferrer">{contribution.linkLabel}</a></div>
+                </article>)}</div>
+                <p className="dated-note">Contribution status reviewed November 16, 2026.</p>
+              </section>
+            </div>
 
             <aside className="findings-column" aria-labelledby="findings-title">
               <div className="column-heading"><h2 id="findings-title">Security research</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <p className="column-intro">Public findings, finder credits, and upstream acknowledgments.</p>
+              <p className="column-intro">Public reports, finder credits, and upstream acknowledgments. Each entry states its current outcome.</p>
               <div className="findings-list">{findings.map(finding => <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} report ${finding.number}`}>{finding.number}</a></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{finding.outcome}</span>{finding.reference && <a href={finding.reference.url} target="_blank" rel="noopener noreferrer">{finding.reference.label}</a>}</div></article>)}</div>
-              <p className="dated-note">Reports reviewed November 11, 2026.</p>
+              <p className="dated-note">Reports reviewed November 16, 2026.</p>
             </aside>
           </div>
 
