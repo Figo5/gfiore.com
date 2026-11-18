@@ -60,7 +60,7 @@ Edit a file on GitHub and commit it to `main`, or merge a pull request. With the
 
 ## Automatic updates
 
-The Cloudflare deployment workflow in GitHub Actions publishes changes from `main` without a desktop computer, open browser, or Codex task. The build command is `npm test && npm run typecheck && npm run build:cloudflare`; the deploy command is `npm run deploy:cloudflare`. Failed checks or builds leave the previous successful deployment in place.
+The Cloudflare deployment workflow in GitHub Actions publishes changes from `main`. The build command is `npm test && npm run typecheck && npm run build:cloudflare`; the deploy command is `npm run deploy:cloudflare`. Failed checks or builds leave the previous successful deployment in place.
 
 GitHub Actions separately refreshes public project details, featured issue states, the latest SQLSage release, and recent authored public reports every six hours. The website checks that public feed with five-minute fetch revalidation, without rebuilding the site or using GitHub credentials. A validated committed snapshot keeps the content available if the feed cannot be read.
 

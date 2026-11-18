@@ -12,6 +12,6 @@ Borrow 0.3.0 on Mac14,9 with macOS 27.0.1, on AC power with only the built-in di
 
 The elapsed span measures the interval between the first and last closed-lid samples, including any intervening gaps. In Off mode, macOS reported sleep and wake notifications and Borrow recorded a long sampling gap.
 
-The first Experimental AC attempt had a shorter closed interval because its deadline was already approaching when the lid closed. During the repeat, Codex started and completed a clean Swift build and test run inside the sampled closed-lid window. The test runner discovered 73 tests. Of those, 70 passed and three opt-in integration tests were skipped. The build log was written from 08:46:55 to 08:47:12 ET.
+The first Experimental AC attempt had a shorter closed interval because its deadline was already approaching when the lid closed. During the repeat, a clean Swift build and test run started and finished inside the sampled closed-lid window. The test runner discovered 73 tests. Of those, 70 passed and three opt-in integration tests were skipped. The build log was written from 08:46:55 to 08:47:12 ET.
 
 Lifecycle events are counted when observed in the log. An event’s append time can lag execution. The clean build is separate evidence of completed local work. This comparison covers one Mac and setup. Provider connectivity, battery-only operation, and actual post-release sleep remain unverified. The global power settings snapshot matched before and after the repeat.
