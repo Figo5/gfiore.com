@@ -45,6 +45,7 @@ export const featuredProjects: FeaturedProject[] = [
     media: { type: "code", command: "npx sqlsage demo", output: "Nullable NOT IN subquery can invalidate anti-membership.\n\nSQL NOT IN becomes UNKNOWN for every otherwise-unmatched outer row if this subquery emits even one NULL.\n\nFix — Use NULL-safe NOT EXISTS anti-membership" },
     caption: "From the offline demo.",
     links: [
+      { label: "Try it", url: "/sqlsage/" },
       { label: "Docs", url: "https://github.com/Figo5/sqlsage/blob/main/docs/tutorials/01-wrong-results-not-in.md" },
       { label: "GitHub", url: "https://github.com/Figo5/sqlsage" },
     ],
