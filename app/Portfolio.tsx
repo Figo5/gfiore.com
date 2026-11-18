@@ -30,7 +30,6 @@ const findings: Finding[] = [
   { project: "mcp-sanitizer", title: "Exported validator fix gaps", description: "Found and reproduced an incomplete fix in the exported URL and file-path validators. The maintainer fixed it in 1.4.2 and published a High advisory with reporter credit.", outcome: "Fixed in 1.4.2 · Oct 31, 2026", url: "https://github.com/starman69/mcp-sanitizer/security/advisories/GHSA-v25x-53wq-6r99", number: "GHSA-v25x-53wq-6r99", reference: { label: "Merged fix", url: "https://github.com/starman69/mcp-sanitizer/pull/14" } },
   { project: "SiYuan", title: "Skill-download SSRF bypass", description: "Found and reproduced a skill-download path that bypassed server-side request forgery protections. The published Medium advisory credits Figo5 as reporter and identifies the now-released v3.8.10 as patched.", outcome: "Patched release available · v3.8.10", url: "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-6pg3-pqxw-jm82", number: "GHSA-6pg3-pqxw-jm82", reference: { label: "v3.8.10 release", url: "https://github.com/siyuan-note/siyuan/releases/tag/v3.8.10" } },
   { project: "qs", title: "Object-input prototype assignment", description: "Found and reproduced a parsing regression that assigned an attacker-controlled prototype. The upstream fix references my report and copies the key as data.", outcome: "Fix merged · Oct 27, 2026", url: "https://github.com/ljharb/qs/issues/633", number: "#633", reference: { label: "Merged fix", url: "https://github.com/ljharb/qs/pull/636" } },
-  { project: "AJV", title: "Unexpected properties pass validation", description: "Reported a validation gap that lets prototype-named properties pass a schema intended to reject unexpected keys. A community response discusses the security implications; no maintainer acceptance or fix is confirmed.", outcome: "Open report · No confirmed fix", url: "https://github.com/ajv-validator/ajv/issues/2685", number: "#2685", reference: { label: "Community response", url: "https://github.com/ajv-validator/ajv/issues/2685#issuecomment-6914785599" } },
 ];
 
 const contributions: Project[] = [
@@ -85,6 +84,13 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
           <FeaturedProjects />
 
           <div className="main-columns">
+            <aside className="findings-column" aria-labelledby="findings-title">
+              <div className="column-heading"><h2 id="findings-title">Security research</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+              <p className="column-intro">Public reports, finder credits, and upstream acknowledgments. Each entry states its current outcome.</p>
+              <div className="findings-list">{findings.map(finding => <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} report ${finding.number}`}>{finding.number}</a></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{finding.outcome}</span>{finding.reference && <a href={finding.reference.url} target="_blank" rel="noopener noreferrer">{finding.reference.label}</a>}</div></article>)}</div>
+              <p className="dated-note">Reports reviewed November 16, 2026.</p>
+            </aside>
+
             <div className="projects-column">
               <section aria-labelledby="projects-title">
                 <div className="column-heading"><h2 id="projects-title">More projects</h2><a className="subtle-link" href="https://github.com/Figo5?tab=repositories" target="_blank" rel="noopener noreferrer">All repos</a></div>
@@ -115,12 +121,6 @@ export default function Portfolio({ initialProfile: profile, github }: { initial
               </section>
             </div>
 
-            <aside className="findings-column" aria-labelledby="findings-title">
-              <div className="column-heading"><h2 id="findings-title">Security research</h2><a className="subtle-link" href="https://github.com/Figo5" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-              <p className="column-intro">Public reports, finder credits, and upstream acknowledgments. Each entry states its current outcome.</p>
-              <div className="findings-list">{findings.map(finding => <article className="finding-row" key={finding.url}><div className="finding-label"><span>{finding.project}</span><a href={finding.url} target="_blank" rel="noopener noreferrer" aria-label={`${finding.project} report ${finding.number}`}>{finding.number}</a></div><h3><a href={finding.url} target="_blank" rel="noopener noreferrer">{finding.title}</a></h3><p>{finding.description}</p><div className="finding-footer"><span>{finding.outcome}</span>{finding.reference && <a href={finding.reference.url} target="_blank" rel="noopener noreferrer">{finding.reference.label}</a>}</div></article>)}</div>
-              <p className="dated-note">Reports reviewed November 16, 2026.</p>
-            </aside>
           </div>
 
           {hasFavorites && <section className="favorites-section" aria-labelledby="favorites-title"><div className="favorites-heading"><h2 id="favorites-title">A few favorites</h2></div><div className="favorites-grid">{(["albums", "movies", "courses"] as FavoriteCategory[]).map(category => {
