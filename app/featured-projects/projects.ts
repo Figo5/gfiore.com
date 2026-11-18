@@ -28,11 +28,14 @@ export const featuredProjects: FeaturedProject[] = [
     name: "Borrow",
     description: "A native macOS recorder for unattended commands, Codex activity, and temporary wake holds.",
     stack: "Swift · macOS",
-    stage: "Development preview",
+    stage: "Source preview",
     url: "/borrow",
     media: { type: "image", src: "/projects/borrow-walkthrough.jpg", alt: "Borrow’s native macOS interface showing an open-lid rehearsal and a confirmed idle-sleep hold", width: 1440, height: 900 },
     caption: "Native open-lid rehearsal. The case study includes a separate closed-lid comparison on one Mac.",
-    links: [{ label: "Case study", url: "/borrow" }],
+    links: [
+      { label: "Case study", url: "/borrow" },
+      { label: "GitHub", url: "https://github.com/Figo5/borrow" },
+    ],
   },
   {
     name: "SQLSage",

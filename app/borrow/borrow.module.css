@@ -49,6 +49,26 @@
   line-height: 1.7;
 }
 
+.releaseLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.releaseLinks a {
+  display: inline-block;
+  min-height: 24px;
+  color: var(--accent);
+}
+
+.releaseLinks a:hover {
+  color: var(--text);
+}
+
 .facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));

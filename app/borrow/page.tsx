@@ -16,10 +16,14 @@ export default function BorrowPage() {
 
       <header className={styles.header}>
         <h1>Borrow</h1>
-        <p className={styles.projectMeta}>Swift · macOS · 0.3.0 development preview</p>
+        <p className={styles.projectMeta}>Swift · macOS · 0.3.0 source preview</p>
         <p className={styles.lede}>
           Borrow records local commands and activity from a selected Codex session. It can request a temporary wake hold and saves its observations in a local report.
         </p>
+        <ul className={styles.releaseLinks} aria-label="Borrow release links">
+          <li><a href="https://github.com/Figo5/borrow/releases/tag/v0.3.0-preview">Get the source preview</a></li>
+          <li><a href="https://github.com/Figo5/borrow">GitHub repository</a></li>
+        </ul>
         <dl className={styles.facts}>
           <div>
             <dt>Machine</dt>
