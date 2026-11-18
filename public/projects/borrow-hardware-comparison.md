@@ -2,7 +2,7 @@
 
 November 18, 2026 · Eastern time
 
-Borrow 0.3.0 on Mac14,9 with macOS 27.0.1, on AC power with only the built-in display detected at preflight. Connectivity probing was off. Hermes’s existing keep-awake service was paused before the comparison and restored afterward. macOS separately confirmed that the Experimental AC system-sleep assertion belonged to Borrow’s helper.
+Borrow 0.3.0 on Mac14,9 with macOS 27.0.1, on AC power with only the built-in display detected at preflight. Connectivity probing was off. An existing background keep-awake service was paused before the comparison and restored afterward. macOS separately confirmed that the Experimental AC system-sleep assertion belonged to Borrow’s helper.
 
 | Mode | Sampled closed-lid window | Elapsed span | Closed samples | Largest gap between closed samples | Codex events between closed samples | Sleep / wake notifications during run | Borrow hold release |
 |---|---|---:|---:|---:|---:|---:|---|

@@ -79,7 +79,7 @@ export default function BorrowPage() {
       <section className={styles.section} aria-labelledby="comparison-title">
         <h2 id="comparison-title">Off vs Experimental AC</h2>
         <p className={styles.prose}>
-          Off requests no hold. In Experimental AC mode, macOS confirmed that Borrow’s helper held the system-sleep assertion. Hermes’s keep-awake service was paused for the trials. Connectivity checks were off.
+          Off requests no hold. In Experimental AC mode, macOS confirmed that Borrow’s helper held the system-sleep assertion. A separate keep-awake service was paused for the trials. Connectivity checks were off.
         </p>
         <p className={styles.prose}>The comparison uses the longer Experimental AC repeat. The hardware report includes the earlier 2 minute 22 second attempt, which ended at its deadline. Each span includes any gaps between closed-lid samples.</p>
         <div className={styles.tableWrap}>
