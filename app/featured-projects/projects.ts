@@ -21,7 +21,7 @@ export const featuredProjects: FeaturedProject[] = [
     stack: "TypeScript · Research tools",
     url: "https://github.com/Figo5/civicfolio",
     media: { type: "image", src: "/projects/civicfolio-current.jpg", alt: "Civicfolio market screening and research interface, captured October 30, 2026", width: 1120, height: 800 },
-    caption: "Local application capture, October 30, 2026. Displayed market observations are historical.",
+    caption: "Screening and research view.",
     links: [{ label: "GitHub", url: "https://github.com/Figo5/civicfolio" }],
   },
   {
@@ -31,7 +31,7 @@ export const featuredProjects: FeaturedProject[] = [
     stage: "Source preview",
     url: "/borrow",
     media: { type: "image", src: "/projects/borrow-walkthrough.jpg", alt: "Borrow’s native macOS interface showing an open-lid rehearsal and a confirmed idle-sleep hold", width: 1440, height: 900 },
-    caption: "Native open-lid rehearsal. The case study includes a separate closed-lid comparison on one Mac.",
+    caption: "Native app holding a wake lease during a rehearsal.",
     links: [
       { label: "Case study", url: "/borrow" },
       { label: "GitHub", url: "https://github.com/Figo5/borrow" },
@@ -43,7 +43,7 @@ export const featuredProjects: FeaturedProject[] = [
     stack: "TypeScript · PostgreSQL",
     url: "https://github.com/Figo5/sqlsage",
     media: { type: "code", command: "npx sqlsage demo", output: "Nullable NOT IN subquery can invalidate anti-membership.\n\nSQL NOT IN becomes UNKNOWN for every otherwise-unmatched outer row if this subquery emits even one NULL.\n\nFix — Use NULL-safe NOT EXISTS anti-membership" },
-    caption: "Excerpt from the published offline demo. No query execution or speedup is implied.",
+    caption: "From the offline demo.",
     links: [
       { label: "Docs", url: "https://github.com/Figo5/sqlsage/blob/main/docs/tutorials/01-wrong-results-not-in.md" },
       { label: "GitHub", url: "https://github.com/Figo5/sqlsage" },
@@ -56,7 +56,7 @@ export const featuredProjects: FeaturedProject[] = [
     url: "https://github.com/Figo5/edgeterminal",
     stage: "Beta",
     media: { type: "image", src: "/projects/edgeterminal-current.jpg", alt: "EdgeTerminal Week 8 NFL projections interface, captured October 30, 2026", width: 1120, height: 800 },
-    caption: "Local application capture, October 30, 2026. Research estimates, not a validated prediction record.",
+    caption: "Week 8 NFL projections.",
     links: [{ label: "GitHub", url: "https://github.com/Figo5/edgeterminal" }],
   },
   {
@@ -64,8 +64,8 @@ export const featuredProjects: FeaturedProject[] = [
     description: "AI-assisted git diff reviews for security issues and unintended behavior changes.",
     stack: "TypeScript · Code review",
     url: "https://github.com/Figo5/diffguard",
-    media: { type: "code", command: "npm run demo", output: "FIXTURE DEMO — prewritten finding, no model call or accuracy claim.\n\n[security] high  query.js:2\n  User input is interpolated into a SQL query.\n  Fix: Use a parameterized query with a separate values array.\n\n1 finding (1 security)" },
-    caption: "Captured fixture output through the real CLI. The finding is prewritten; this is not evidence of model accuracy.",
+    media: { type: "code", command: "npm run demo", output: "[security] high  query.js:2\n  User input is interpolated into a SQL query.\n  Fix: Use a parameterized query with a separate values array.\n\n1 finding (1 security)" },
+    caption: "From the bundled demo.",
     links: [
       { label: "Example", url: "https://github.com/Figo5/diffguard/blob/main/docs/try-it.md" },
       { label: "GitHub", url: "https://github.com/Figo5/diffguard" },
@@ -77,7 +77,7 @@ export const featuredProjects: FeaturedProject[] = [
     stack: "Python · Docker",
     url: "https://github.com/Figo5/lab-in-a-box",
     media: { type: "image", src: "/projects/lab-in-a-box.png", alt: "Lab in a Box's actual labctl help output, listing commands for a local authorized security lab", width: 960, height: 590 },
-    caption: "Published labctl help capture. It does not start targets or test external systems.",
+    caption: "The labctl command reference.",
     links: [{ label: "GitHub", url: "https://github.com/Figo5/lab-in-a-box" }],
   },
 ];

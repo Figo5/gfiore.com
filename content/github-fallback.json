@@ -36,7 +36,7 @@
       "url": "https://github.com/Figo5/lab-in-a-box"
     },
     "parcel-pack": {
-      "description": "Offline SwiftUI iPhone packing puzzle with generated, solvable boxes. Source available; iOS device verification pending.",
+      "description": "Offline SwiftUI iPhone packing puzzle with generated, solvable boxes.",
       "language": "Swift",
       "pushedAt": "2026-10-17T20:25:55.000Z",
       "archived": false,
@@ -71,7 +71,7 @@
       "url": "https://github.com/Figo5/sqlsage"
     },
     "balatroaisparring": {
-      "description": "Experimental local Balatro AI practice companion. Development in progress; not yet playable.",
+      "description": "Work in progress: a local Balatro AI practice companion.",
       "language": "Python",
       "pushedAt": "2026-10-16T13:52:49.000Z",
       "archived": false,
@@ -99,7 +99,7 @@
       "url": "https://github.com/Figo5/worldhand"
     },
     "fairwayos": {
-      "description": "Golf-video analysis research prototype: automatic ball, clubhead, golfer and cup tracking with video-motion analytics. Paused development checkpoint.",
+      "description": "Golf-video analysis prototype: automatic ball, clubhead, golfer and cup tracking with motion analytics.",
       "language": "Python",
       "pushedAt": "2026-10-16T13:09:27.000Z",
       "archived": false,

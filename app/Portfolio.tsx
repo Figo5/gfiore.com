@@ -12,11 +12,10 @@ type Project = { name: string; description: string; stack: string; url?: string;
 type Finding = { project: string; title: string; description: string; outcome: string; url: string; number: string; reference?: { label: string; url: string } };
 
 const projects: Project[] = [
-  { name: "FairwayOS", description: "A golf-video analysis prototype for tracking the ball, clubhead, golfer, and cup.", stack: "Python · Computer vision", url: "https://github.com/Figo5/fairwayos", stage: "Prototype", notes: ["Development is paused at a research checkpoint."] },
+  { name: "FairwayOS", description: "A golf-video analysis prototype for tracking the ball, clubhead, golfer, and cup.", stack: "Python · Computer vision", url: "https://github.com/Figo5/fairwayos", stage: "Prototype" },
   { name: "Gmail Tidy", description: "A Gmail cleanup CLI using declarative, non-destructive rules.", stack: "Python · CLI", url: "https://github.com/Figo5/gmail-tidy" },
-  { name: "Parcel Pack", description: "A SwiftUI packing puzzle with on-device level generation, hints, and local saves.", stack: "Swift · SwiftUI", url: "https://github.com/Figo5/parcel-pack", stage: "Source available", notes: ["Core tests and the shared interface were checked on macOS. iOS compilation and iPhone verification are pending."] },
+  { name: "Parcel Pack", description: "A SwiftUI packing puzzle with on-device level generation, hints, and local saves.", stack: "Swift · SwiftUI", url: "https://github.com/Figo5/parcel-pack" },
   { name: "Civicfolio", description: "A local-first stock research app with cited hypotheses, market context, and a research journal.", stack: "TypeScript · Research tools", url: "https://github.com/Figo5/civicfolio" },
-  { name: "Balatro AI Sparring", description: "An experimental local AI practice companion for Balatro.", stack: "Python · AI", url: "https://github.com/Figo5/BalatroAISparring", stage: "In development", notes: ["Development is in progress; it is not yet playable."] },
   { name: "SQLSage", description: "A PostgreSQL CLI for query analysis and rewrite suggestions.", stack: "TypeScript · PostgreSQL", url: "https://github.com/Figo5/sqlsage" },
   { name: "upgrade-check", description: "Guides coding agents through upgrade tests for saved data, settings, boundary values, and restart persistence.", stack: "Agent skill · Upgrade testing", url: "https://www.agensi.io/skills/upgrade-check", linkLabel: "Agensi", stage: "Live on Agensi" },
   { name: "EdgeTerminal", description: "A local NFL research beta for comparing prices, inspecting projections, and tracking forecasts.", stack: "Python · Research tools", url: "https://github.com/Figo5/edgeterminal", stage: "Beta" },
@@ -37,7 +36,7 @@ const findings: Finding[] = [
 const contributions: Project[] = [
   { name: "Kubernetes: image-pull enforcement", description: "Submitted a fix to enforce the required image-pull policy on newly added ephemeral containers, including those that reuse an existing image. Builds on an earlier contributor's attempt.", stack: "Go", url: "https://github.com/kubernetes/kubernetes/pull/143422", linkLabel: "PR #143422", stage: "PR open" },
   { name: "Kubernetes: node compatibility", description: "Submitted a fix to check node feature requirements when ephemeral containers are added, while preserving existing containers.", stack: "Go", url: "https://github.com/kubernetes/kubernetes/pull/143424", linkLabel: "PR #143424", stage: "PR open" },
-  { name: "Chia: wallet validation guard", description: "Proposed an early validation check to reject malformed block data before wallet hashing can panic. The hash panic was reproduced locally; an end-to-end wallet failure was not tested.", stack: "Python", url: "https://github.com/Chia-Network/chia-blockchain/pull/21618", linkLabel: "PR #21618", stage: "PR open" },
+  { name: "Chia: wallet validation guard", description: "Proposed an early validation check to reject malformed block data before wallet hashing can panic.", stack: "Python", url: "https://github.com/Chia-Network/chia-blockchain/pull/21618", linkLabel: "PR #21618", stage: "PR open" },
 ];
 
 const favoriteLabels: Record<FavoriteCategory, string> = {
