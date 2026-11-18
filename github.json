@@ -3,9 +3,30 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-18T15:13:22.000Z",
+      "pushedAt": "2026-11-18T18:18:30.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
+    },
+    "lab-in-a-box": {
+      "description": "A local Docker lab for security practice.",
+      "language": "Python",
+      "pushedAt": "2026-11-18T18:14:36.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/lab-in-a-box"
+    },
+    "edgeterminal": {
+      "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
+      "language": "Python",
+      "pushedAt": "2026-11-18T16:53:41.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/edgeterminal"
+    },
+    "sqlsage": {
+      "description": "PostgreSQL query analysis and rewrite suggestions.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-18T16:53:21.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/sqlsage"
     },
     "borrow": {
       "description": "Native Swift app for rehearsing and diagnosing unattended local tasks on macOS.",
@@ -13,13 +34,6 @@
       "pushedAt": "2026-11-18T15:04:25.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/borrow"
-    },
-    "sqlsage": {
-      "description": "PostgreSQL query analysis and rewrite suggestions.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-18T15:04:24.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/sqlsage"
     },
     "parcel-pack": {
       "description": "Offline SwiftUI iPhone packing puzzle with generated, solvable boxes.",
@@ -41,13 +55,6 @@
       "pushedAt": "2026-11-18T14:55:15.000Z",
       "archived": true,
       "url": "https://github.com/Figo5/worldhand"
-    },
-    "edgeterminal": {
-      "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
-      "language": "Python",
-      "pushedAt": "2026-11-18T14:52:52.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/edgeterminal"
     },
     "fairwayos": {
       "description": "Golf-video analysis prototype: automatic ball, clubhead, golfer and cup tracking with motion analytics.",
@@ -105,13 +112,6 @@
       "archived": false,
       "url": "https://github.com/Figo5/diffguard"
     },
-    "lab-in-a-box": {
-      "description": "A local Docker lab for security practice.",
-      "language": "Python",
-      "pushedAt": "2026-10-17T20:25:59.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/lab-in-a-box"
-    },
     "balatroaisparring": {
       "description": "Work in progress: a local Balatro AI practice companion.",
       "language": "Python",
@@ -128,25 +128,25 @@
     }
   },
   "issues": {
-    "oapi-codegen/nethttp-middleware#89": {
-      "state": "open",
-      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
-      "updatedAt": "2026-10-24T11:09:52.000Z"
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     },
     "mafintosh/tar-fs#122": {
       "state": "open",
       "url": "https://github.com/mafintosh/tar-fs/issues/122",
       "updatedAt": "2026-10-23T18:17:28.000Z"
     },
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "oapi-codegen/nethttp-middleware#89": {
+      "state": "open",
+      "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
+      "updatedAt": "2026-10-24T11:09:52.000Z"
     }
   },
   "contributions": [
@@ -178,6 +178,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-18T15:24:59.740Z",
+  "fetchedAt": "2026-11-18T20:36:44.733Z",
   "stale": false
 }
