@@ -16,6 +16,17 @@ const version = output.match(/Worker Version ID:\s*([a-f0-9-]{36})\b/)?.[1];
 if (!version || !/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(version)) {
   throw new Error("Cloudflare did not return a valid uploaded version; no version was activated.");
 }
-execFileSync(process.execPath, [wrangler, "versions", "deploy", `${version}@100%`, "--yes", "--config", config], {
-  stdio: "inherit",
-});
+// A just-uploaded version is sometimes not yet visible to the deploy API
+// ("version could not be found", code 100146), so retry with a short backoff.
+for (let attempt = 1; ; attempt++) {
+  try {
+    execFileSync(process.execPath, [wrangler, "versions", "deploy", `${version}@100%`, "--yes", "--config", config], {
+      stdio: "inherit",
+    });
+    break;
+  } catch (error) {
+    if (attempt >= 4) throw error;
+    console.error(`Activation attempt ${attempt} failed; retrying in ${attempt * 5}s.`);
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, attempt * 5000);
+  }
+}
