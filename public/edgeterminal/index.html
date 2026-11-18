@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="EdgeTerminal">
+<link rel="manifest" href="/edgeterminal/static/manifest.webmanifest">
+<title>EdgeTerminal — demo</title>
+<link rel="stylesheet" href="/edgeterminal/static/style.css?v=nba-20261020">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23111111'/><text x='8' y='24' fill='%23f5f5f7' font-family='Arial' font-weight='700' font-size='23'>E</text></svg>">
+<style>
+#demo-banner{background:#1b1b1f;color:#c9c9d1;font:13px/1.5 -apple-system,system-ui,sans-serif;padding:8px 16px;text-align:center;border-bottom:1px solid #2a2a30}
+#demo-banner a{color:#f5f5f7}
+/* The research and account surfaces are operator-only in the hosted beta (and
+   sign-in is disabled here), so the demo shows only the two public tabs. */
+#sections [data-section="research"],#sections [data-section="account"],[data-save-game],[data-save-prop]{display:none!important}
+</style>
+<script src="/edgeterminal/shim.js"></script>
+</head>
+<body>
+<div id="demo-banner">Read-only demo — a captured snapshot of the NFL week 11 board. Live updates, saving and sign-in are disabled. <a href="https://github.com/Figo5/edgeterminal">Source on GitHub</a></div>
+<header id="topbar">
+  <div class="brand">Edge<span>Terminal</span></div>
+  <label class="league-label"><span class="sr-only">Sport</span><select id="leagueSelect" aria-label="Sport"><option value="NFL">NFL</option><option value="NBA">NBA</option></select></label>
+  <nav id="sections" aria-label="Primary navigation"></nav>
+  <div class="topright">
+    <span class="meta" id="lastUpdated" role="status" aria-live="polite">Updated —</span>
+    <button id="refreshButton" class="btn refresh-button" type="button" aria-label="Check due slate and research updates">↻ Check updates</button>
+  </div>
+  <span class="mobile-update" id="mobileUpdated" role="status" aria-live="polite">Updated —</span>
+</header>
+
+<div id="shell">
+  <main id="main"><div class="loading">Loading slate…</div></main>
+</div>
+
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script src="/edgeterminal/static/product_ui.js?v=neutral-20260924a"></script>
+<script src="/edgeterminal/static/nba_ui.js?v=spread-live-20261029"></script>
+<script src="/edgeterminal/static/app.js?v=spread-live-20261029"></script>
+</body>
+</html>

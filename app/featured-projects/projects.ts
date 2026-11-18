@@ -57,7 +57,10 @@ export const featuredProjects: FeaturedProject[] = [
     stage: "Beta",
     media: { type: "image", src: "/projects/edgeterminal-current.jpg", alt: "EdgeTerminal Week 8 NFL projections interface, captured October 30, 2026", width: 1120, height: 800 },
     caption: "Week 8 NFL projections.",
-    links: [{ label: "GitHub", url: "https://github.com/Figo5/edgeterminal" }],
+    links: [
+      { label: "Live demo", url: "/edgeterminal/" },
+      { label: "GitHub", url: "https://github.com/Figo5/edgeterminal" },
+    ],
   },
   {
     name: "DiffGuard",
