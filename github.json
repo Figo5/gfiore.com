@@ -3,16 +3,72 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-17T20:59:23.000Z",
+      "pushedAt": "2026-11-18T15:13:22.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
+    },
+    "borrow": {
+      "description": "Native Swift app for rehearsing and diagnosing unattended local tasks on macOS.",
+      "language": "Swift",
+      "pushedAt": "2026-11-18T15:04:25.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/borrow"
+    },
+    "sqlsage": {
+      "description": "PostgreSQL query analysis and rewrite suggestions.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-18T15:04:24.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/sqlsage"
+    },
+    "parcel-pack": {
+      "description": "Offline SwiftUI iPhone packing puzzle with generated, solvable boxes.",
+      "language": "Swift",
+      "pushedAt": "2026-11-18T15:04:22.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/parcel-pack"
+    },
+    "breakpar": {
+      "description": "Archived daily browser golf game: 18 holes, seeded shot decisions, and server-authoritative simulation.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-18T14:59:46.000Z",
+      "archived": true,
+      "url": "https://github.com/Figo5/breakpar"
+    },
+    "worldhand": {
+      "description": "Deterministic planet-building poker roguelike with a 3D world and offline portable build",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-18T14:55:15.000Z",
+      "archived": true,
+      "url": "https://github.com/Figo5/worldhand"
     },
     "edgeterminal": {
       "description": "Local NFL research beta: compare prices, inspect experimental projections, and track saved forecasts.",
       "language": "Python",
-      "pushedAt": "2026-11-13T13:22:40.000Z",
+      "pushedAt": "2026-11-18T14:52:52.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/edgeterminal"
+    },
+    "fairwayos": {
+      "description": "Golf-video analysis prototype: automatic ball, clubhead, golfer and cup tracking with motion analytics.",
+      "language": "Python",
+      "pushedAt": "2026-11-18T14:45:57.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/fairwayos"
+    },
+    "gmail-tidy": {
+      "description": "Privacy-conscious Gmail cleanup CLI using declarative, non-destructive rules",
+      "language": "Python",
+      "pushedAt": "2026-11-18T14:42:39.000Z",
+      "archived": false,
+      "url": "https://github.com/Figo5/gmail-tidy"
+    },
+    "ousel": {
+      "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
+      "language": "TypeScript",
+      "pushedAt": "2026-11-18T14:16:12.000Z",
+      "archived": true,
+      "url": "https://github.com/Figo5/ousel"
     },
     "balatro-overhaul": {
       "description": "A free fan mod for Balatro: online multiplayer, new modes, integrated mod support, cross platform, and much more !",
@@ -28,26 +84,12 @@
       "archived": false,
       "url": "https://github.com/Figo5/chia-blockchain"
     },
-    "sqlsage": {
-      "description": "PostgreSQL query analysis and rewrite suggestions.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-02T21:50:08.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/sqlsage"
-    },
     "kubernetes": {
       "description": "Production-Grade Container Scheduling and Management",
       "language": null,
       "pushedAt": "2026-11-02T21:50:06.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/kubernetes"
-    },
-    "ousel": {
-      "description": "A local workspace for understanding what your coding-agent team is doing and what needs your review.",
-      "language": "TypeScript",
-      "pushedAt": "2026-11-02T21:47:08.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/ousel"
     },
     "figo5": {
       "description": "Tools and side projects.",
@@ -70,15 +112,8 @@
       "archived": false,
       "url": "https://github.com/Figo5/lab-in-a-box"
     },
-    "parcel-pack": {
-      "description": "Offline SwiftUI iPhone packing puzzle with generated, solvable boxes. Source available; iOS device verification pending.",
-      "language": "Swift",
-      "pushedAt": "2026-10-17T20:25:55.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/parcel-pack"
-    },
     "balatroaisparring": {
-      "description": "Experimental local Balatro AI practice companion. Development in progress; not yet playable.",
+      "description": "Work in progress: a local Balatro AI practice companion.",
       "language": "Python",
       "pushedAt": "2026-10-16T13:52:49.000Z",
       "archived": false,
@@ -90,46 +125,18 @@
       "pushedAt": "2026-10-16T13:52:47.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/civicfolio"
-    },
-    "gmail-tidy": {
-      "description": "Privacy-conscious Gmail cleanup CLI using declarative, non-destructive rules",
-      "language": "Python",
-      "pushedAt": "2026-10-16T13:51:05.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/gmail-tidy"
-    },
-    "worldhand": {
-      "description": "Deterministic planet-building poker roguelike with a 3D world and offline portable build",
-      "language": "TypeScript",
-      "pushedAt": "2026-10-16T13:26:26.000Z",
-      "archived": true,
-      "url": "https://github.com/Figo5/worldhand"
-    },
-    "fairwayos": {
-      "description": "Golf-video analysis research prototype: automatic ball, clubhead, golfer and cup tracking with video-motion analytics. Paused development checkpoint.",
-      "language": "Python",
-      "pushedAt": "2026-10-16T13:09:27.000Z",
-      "archived": false,
-      "url": "https://github.com/Figo5/fairwayos"
-    },
-    "breakpar": {
-      "description": "Archived daily browser golf game: 18 holes, seeded shot decisions, and server-authoritative simulation.",
-      "language": "TypeScript",
-      "pushedAt": "2026-08-06T15:14:51.000Z",
-      "archived": true,
-      "url": "https://github.com/Figo5/breakpar"
     }
   },
   "issues": {
-    "mafintosh/tar-fs#122": {
-      "state": "open",
-      "url": "https://github.com/mafintosh/tar-fs/issues/122",
-      "updatedAt": "2026-10-23T18:17:28.000Z"
-    },
     "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
       "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
       "updatedAt": "2026-10-24T11:09:52.000Z"
+    },
+    "mafintosh/tar-fs#122": {
+      "state": "open",
+      "url": "https://github.com/mafintosh/tar-fs/issues/122",
+      "updatedAt": "2026-10-23T18:17:28.000Z"
     },
     "follow-redirects/follow-redirects#294": {
       "state": "closed",
@@ -171,6 +178,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-18T07:35:54.039Z",
+  "fetchedAt": "2026-11-18T15:24:59.740Z",
   "stale": false
 }
