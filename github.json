@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-20T20:26:47.000Z",
+      "pushedAt": "2026-11-21T07:16:00.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -178,6 +178,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-21T07:15:58.911Z",
+  "fetchedAt": "2026-11-21T19:21:14.205Z",
   "stale": false
 }
