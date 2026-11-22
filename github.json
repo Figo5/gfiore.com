@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-21T07:16:00.000Z",
+      "pushedAt": "2026-11-21T19:21:16.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -128,28 +128,35 @@
     }
   },
   "issues": {
-    "follow-redirects/follow-redirects#294": {
-      "state": "closed",
-      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
-      "updatedAt": "2026-10-22T15:08:10.000Z"
-    },
     "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
       "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
       "updatedAt": "2026-10-24T11:09:52.000Z"
     },
-    "mafintosh/tar-fs#122": {
-      "state": "open",
-      "url": "https://github.com/mafintosh/tar-fs/issues/122",
-      "updatedAt": "2026-10-23T18:17:28.000Z"
+    "follow-redirects/follow-redirects#294": {
+      "state": "closed",
+      "url": "https://github.com/follow-redirects/follow-redirects/issues/294",
+      "updatedAt": "2026-10-22T15:08:10.000Z"
     },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
       "updatedAt": "2026-10-19T16:12:40.000Z"
+    },
+    "mafintosh/tar-fs#122": {
+      "state": "open",
+      "url": "https://github.com/mafintosh/tar-fs/issues/122",
+      "updatedAt": "2026-10-23T18:17:28.000Z"
     }
   },
   "contributions": [
+    {
+      "title": "extractAll writes through a pre-existing dangling destination symlink (canonical-path guard bypass)",
+      "url": "https://github.com/srikanth-lingala/zip4j/issues/594",
+      "repository": "srikanth-lingala/zip4j",
+      "action": "Public report",
+      "occurredAt": "2026-10-23T22:56:40.000Z"
+    },
     {
       "title": "unevaluatedProperties ignores prototype-named properties (dynamic tracker uses a plain object)",
       "url": "https://github.com/ajv-validator/ajv/issues/2685",
@@ -163,13 +170,6 @@
       "repository": "kubernetes/kubernetes",
       "action": "Pull request",
       "occurredAt": "2026-10-26T15:32:21.000Z"
-    },
-    {
-      "title": "nodedeclaredfeatures: validate the pods/ephemeralcontainers subresource",
-      "url": "https://github.com/kubernetes/kubernetes/pull/143424",
-      "repository": "kubernetes/kubernetes",
-      "action": "Pull request",
-      "occurredAt": "2026-10-26T16:21:28.000Z"
     }
   ],
   "latestRelease": {
@@ -178,6 +178,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-21T19:21:14.205Z",
+  "fetchedAt": "2026-11-22T06:56:37.031Z",
   "stale": false
 }
