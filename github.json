@@ -3,7 +3,7 @@
     "gfiore.com": {
       "description": "My personal website: experience, projects, findings, and favorites.",
       "language": "TypeScript",
-      "pushedAt": "2026-11-27T08:41:41.000Z",
+      "pushedAt": "2026-11-27T21:22:38.000Z",
       "archived": false,
       "url": "https://github.com/Figo5/gfiore.com"
     },
@@ -128,20 +128,20 @@
     }
   },
   "issues": {
-    "mafintosh/tar-fs#122": {
-      "state": "open",
-      "url": "https://github.com/mafintosh/tar-fs/issues/122",
-      "updatedAt": "2026-10-23T18:17:28.000Z"
-    },
     "nodejs/node#66853": {
       "state": "open",
       "url": "https://github.com/nodejs/node/issues/66853",
-      "updatedAt": "2026-10-19T16:12:40.000Z"
+      "updatedAt": "2026-11-27T21:25:42.000Z"
     },
     "oapi-codegen/nethttp-middleware#89": {
       "state": "open",
       "url": "https://github.com/oapi-codegen/nethttp-middleware/issues/89",
       "updatedAt": "2026-10-24T11:09:52.000Z"
+    },
+    "mafintosh/tar-fs#122": {
+      "state": "open",
+      "url": "https://github.com/mafintosh/tar-fs/issues/122",
+      "updatedAt": "2026-10-23T18:17:28.000Z"
     },
     "follow-redirects/follow-redirects#294": {
       "state": "closed",
@@ -150,6 +150,13 @@
     }
   },
   "contributions": [
+    {
+      "title": "Async x() never settles when a symlink linkpath resolves to a parent directory",
+      "url": "https://github.com/isaacs/node-tar/issues/469",
+      "repository": "isaacs/node-tar",
+      "action": "Public report",
+      "occurredAt": "2026-10-21T14:10:52.000Z"
+    },
     {
       "title": "extractAll writes through a pre-existing dangling destination symlink (canonical-path guard bypass)",
       "url": "https://github.com/srikanth-lingala/zip4j/issues/594",
@@ -163,13 +170,6 @@
       "repository": "ajv-validator/ajv",
       "action": "Public report",
       "occurredAt": "2026-10-21T19:59:37.000Z"
-    },
-    {
-      "title": "admission: AlwaysPullImages: support ephemeral containers",
-      "url": "https://github.com/kubernetes/kubernetes/pull/143422",
-      "repository": "kubernetes/kubernetes",
-      "action": "Pull request",
-      "occurredAt": "2026-10-26T15:32:21.000Z"
     }
   ],
   "latestRelease": {
@@ -178,6 +178,6 @@
     "url": "https://github.com/Figo5/sqlsage/releases/tag/v0.2.2",
     "publishedAt": "2026-10-15T12:18:01.000Z"
   },
-  "fetchedAt": "2026-11-27T21:22:36.775Z",
+  "fetchedAt": "2026-11-28T07:55:39.015Z",
   "stale": false
 }
